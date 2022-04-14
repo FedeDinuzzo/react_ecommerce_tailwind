@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const COMMON_STYLES = " flex justify-center align-center h-10 w-10 rounded-full bg-slate-500 text-white "; 
 
-const ItemCount = ({initial, stock}) => {
+const ItemCount = ({initial, stock, onAdd}) => {
     
     const [count, setCounter] = useState(initial);
 
@@ -15,10 +15,6 @@ const ItemCount = ({initial, stock}) => {
             setCounter(count - 1)}
     }
 
-    const onAdd = () => {
-        alert('Agregaste ' + count + ' productos al carrito');
-    }
-
     return (
         <> 
         <div class="flex justify-center text-center text-3xl text-white">
@@ -26,7 +22,7 @@ const ItemCount = ({initial, stock}) => {
                 <button onClick={decrease} class={COMMON_STYLES}>-</button>
                 <div class="mx-2 h-10 w-14 rounded bg-white text-slate-800">{count}</div>
                 <button onClick={increase} class={COMMON_STYLES}>+</button>
-                <button onClick={onAdd}
+                <button onClick={() => onAdd(count)}
                 class="flex ml-4 roundeds px-2 py-1 justify-center align-center bg-slate-900 text-white text-2xl"
                 >Agregar Al Carrito</button>
             </div>   

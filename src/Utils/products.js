@@ -1,10 +1,10 @@
-const products = [ 
+export const products = [ 
     {
         "id": 1,
         "name": "Wine - Casablanca Valley",
         "description": "Murine typhus",
         "price": 255.21,
-        "stock": 1,
+        "stock": 5,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     },
     {
@@ -12,7 +12,7 @@ const products = [
         "name": "Salsify, Organic",
         "description": "Injury iliac artery",
         "price": 113.9,
-        "stock": 2,
+        "stock": 8,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     },
     {
@@ -28,7 +28,7 @@ const products = [
         "name": "Ecolab - Orange Frc, Cleaner",
         "description": "Fet damg d/t dis-antepar",
         "price": 483.56,
-        "stock": 4,
+        "stock": 10,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     },
     {
@@ -36,7 +36,7 @@ const products = [
         "name": "Jolt Cola",
         "description": "Pulmonary valve disorder",
         "price": 427.64,
-        "stock": 5,
+        "stock": 6,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     },
     {
@@ -44,7 +44,7 @@ const products = [
         "name": "Chocolate - Sugar Free Semi Choc",
         "description": "TB lung fibrosis-unspec",
         "price": 296.13,
-        "stock": 6,
+        "stock": 4,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     },
     {
@@ -52,7 +52,7 @@ const products = [
         "name": "Tuna - Loin",
         "description": "Cong fold/cyst post eye",
         "price": 329.82,
-        "stock": 7,
+        "stock": 9,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     },
     {
@@ -64,7 +64,7 @@ const products = [
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     },
     {
-        "id": 9,
+        "id": 7,
         "name": "Fond - Neutral",
         "description": "Arthropathy w nerve dis",
         "price": 126.19,
@@ -80,7 +80,7 @@ const products = [
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     },
     {
-        "id": 11,
+        "id": 6,
         "name": "Nut - Chestnuts, Whole",
         "description": "H zoster complicated NEC",
         "price": 367.61,
@@ -88,7 +88,7 @@ const products = [
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     },
     {
-        "id": 12,
+        "id": 8,
         "name": "Vermouth - Sweet, Cinzano",
         "description": "Comb drug dep NEC-unspec",
         "price": 272.15,
@@ -97,4 +97,11 @@ const products = [
     }
 ]
 
-export default products;
+export const product = {
+    "id": 1,
+    "name": "Wine - Casablanca Valley",
+    "description": "Murine typhus",
+    "price": 255.21,
+    "stock": 5,
+    "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
+}
