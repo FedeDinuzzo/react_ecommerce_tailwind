@@ -7,7 +7,7 @@ module.exports = {
       transitionProperty: {
         right: "right",
       },
-    },
+    },  
   },
   plugins: [],
 }

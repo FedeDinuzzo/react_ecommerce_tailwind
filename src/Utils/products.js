@@ -1,3 +1,5 @@
+import reloj from '../Images/relojes/reloj.png'
+
 export const products = [ 
     {
         "id": 1,
@@ -5,7 +7,7 @@ export const products = [
         "description": "Murine typhus",
         "price": 255.21,
         "stock": 5,
-        "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
+        "image": reloj
     },
     {
         "id": 2,

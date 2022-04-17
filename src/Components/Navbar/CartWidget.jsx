@@ -8,9 +8,9 @@ const COMMON_STYLES =
 export default function CartWidget({ count, className }) {
     return (
         <> 
-        <button className = {className + COMMON_STYLES + "relative w-7 h-7 bg-slate-700"}>
+        <button className = {className + COMMON_STYLES + "relative w-7 h-7 bg-violet-600"}>
             <AiOutlineShoppingCart class="w-5 h-5"/>
-            <div className = {COMMON_STYLES + "w-5 h-5 bg-slate-900 text-xs absolute -top-2 -right-2 font-semibold"}>
+            <div className = {COMMON_STYLES + "w-5 h-5 bg-violet-900 text-xs absolute -top-2 -right-2 font-semibold"}>
                 {count  <= 9 ? count : "9+"}
             </div>
         </button>
