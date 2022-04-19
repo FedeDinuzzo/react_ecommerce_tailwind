@@ -8,8 +8,9 @@ function ItemDetail({product}) {
     }
 
     return (
+        
     <div>
-        <div className="grid grid-cols-2 justify-center text-center m-8">
+        <div key={product.id} className="grid grid-cols-2 justify-center text-center m-8">
             <img src={product.image} alt="producto" className="m-auto" />
             <div>
                 <h3 className="">${product.price}</h3>

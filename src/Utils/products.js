@@ -98,12 +98,3 @@ export const products = [
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
     }
 ]
-
-export const product = {
-    "id": 1,
-    "name": "Wine - Casablanca Valley",
-    "description": "Murine typhus",
-    "price": 255.21,
-    "stock": 5,
-    "image": "http://dummyimage.com/200x250.png/ff4444/ffffff"
-}

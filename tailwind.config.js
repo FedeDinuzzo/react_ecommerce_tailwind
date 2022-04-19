@@ -5,9 +5,12 @@ module.exports = {
   theme: {
     extend: {
       transitionProperty: {
-        right: "right",
+        right: "right"
       },
     },  
+    fontFamily: {
+      body: ['Poppins'],
+    },
   },
   plugins: [],
 }

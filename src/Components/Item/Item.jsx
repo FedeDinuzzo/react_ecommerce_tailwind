@@ -14,7 +14,7 @@ function Item({id, name, price, image}) {
               <img src={image} alt="producto" className="m-auto " />
               <h3 className="my-2">${price}</h3>
               <h3 className="">{name}</h3>
-              <Link to={`/item`}>
+              <Link to={`/item/:id`}>
                 <button class="fondo flex rounded px-3 py-1 justify-center align-centent text-white text-2xl mx-auto mt-4"
                 >View Detail</button>
               </Link>
