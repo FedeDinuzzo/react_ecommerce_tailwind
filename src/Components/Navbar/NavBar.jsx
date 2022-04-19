@@ -24,10 +24,11 @@ export default function NavBar() {
 
     return (
         <> 
-        <nav className={(color ? 'bg-[#240347]' : '') + " md:flex justify-between items-center sticky top-0 z-10 md:px-2"}>
+        <nav className={(color ? 'bg-[#240347]' : '') + " sticky top-0 z-10"}>
+            <div className="max-w-screen-2xl m-auto justify-between items-center md:flex xl:px-24">
             <div className="flex items-center justify-between">
                 <Link to={`/`}>
-                    <img className="w-16 h-14 p-2" src="./logo192.png" alt="logo" />
+                    <img className="w-16 h-14 p-2 ml-10" src="./logo192.png" alt="logo" />
                 </Link>
                 <CartWidget count={10} className="md:hidden flex" />
                 {showNav ? (
@@ -48,6 +49,7 @@ export default function NavBar() {
                 <NavItem content="Contact" href="/contact" />
                 <CartWidget count={10} className="hidden md:flex" />
             </ul>
+            </div>
         </nav>
         </>
     );

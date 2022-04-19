@@ -28,14 +28,14 @@ function ItemListContainer() {
     return (
       <>
         <Hero />
-        <Categories />
-        <div class="fondo -mt-16 min-h-screen"></div>
+        <Categories />    
+        <div class="min-h-screen">
           <div className="w-screen bg-gray-50">
             <div className="z-10 grid mx-auto py-40 p-2 sm:grid-cols-1 md:grid-cols-2 md:max-w-2xl lg:grid-cols-3 lg:max-w-4xl xl:grid-cols-4 xl:max-w-7xl">
             <ItemList products={items} />
             </div>
           </div>
-          
+        </div>  
       </>
     );
 }

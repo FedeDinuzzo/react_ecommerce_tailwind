@@ -24,7 +24,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
                 <button onClick={increase} class={COMMON_STYLES}>+</button>
                 <button onClick={() => onAdd(count)}
                 class="flex w-full rounded px-2 py-1 m-auto justify-center align-center bg-slate-900 text-white text-2xl"
-                ></button>
+                >Add to Cart</button>
             </div>   
         </div>
         </>

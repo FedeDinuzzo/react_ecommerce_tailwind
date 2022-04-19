@@ -9,7 +9,7 @@ function ItemDetailContainer() {
     const [item, setItem] = useState([])
     const [loading, setLoading] = useState(true)
     const {id} = useParams()
-    const filterId = products.filter(item => item.id === Number(id))
+    const filterId = products.find(item => item.id === Number(id))
 
     useEffect(() => {
         customFetch(1000, filterId)
@@ -18,7 +18,7 @@ function ItemDetailContainer() {
             .finally(() => { 
                 setLoading(false);
             })
-    }, [id])
+    }, [filterId])
 
     console.log(item)
 
