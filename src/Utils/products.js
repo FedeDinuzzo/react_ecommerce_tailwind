@@ -80,7 +80,7 @@ export const products = [
         "price": 126.19,
         "stock": 9,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff",
-        "category": "chicos"
+        "category": "Chicos"
     },
     {
         "id": 10,
@@ -89,7 +89,7 @@ export const products = [
         "price": 274.68,
         "stock": 10,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff",
-        "category": "chicos"
+        "category": "Chicos"
     },
     {
         "id": 6,
@@ -98,7 +98,7 @@ export const products = [
         "price": 367.61,
         "stock": 11,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff",
-        "category": "chicos"
+        "category": "Chicos"
     },
     {
         "id": 8,
@@ -107,6 +107,6 @@ export const products = [
         "price": 272.15,
         "stock": 12,
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff",
-        "category": "chicos"
+        "category": "Chicos"
     }
 ]
