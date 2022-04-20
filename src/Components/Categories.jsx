@@ -7,6 +7,9 @@ function Categories() {
     <>
     <h1 className="flex justify-center align-center pt-32 bg-gray-50 text-6xl font-bold">Categorias</h1>
     <div className="flex justify-center align-center pt-8 bg-gray-50">
+       <Link to={`/`}>
+        <button className="mx-4 rounded text-white p-2 bg-slate-500">Todos</button>
+      </Link>
       <Link to={`/category/Hombre`}>
         <button className="mx-4 rounded text-white p-2 bg-slate-500">Hombre</button>
       </Link>

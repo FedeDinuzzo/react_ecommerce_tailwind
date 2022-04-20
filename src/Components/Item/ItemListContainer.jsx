@@ -10,15 +10,13 @@ import Categories from '../Categories'
 function ItemListContainer() {
 
     const [items, setItems] = useState([])
-    const [filterItems, setFilterItems] = useState([])
     const { category } = useParams()
-    const filterCat = products.filter((product) => product.category === category)
 
     useEffect(() => {
-        customFetch(1000, products)
+        customFetch(1000, products, category)
           .then(res => setItems(res))
           .catch(error => console.log(error));
-    }, [items])
+    }, [category])
     
     return (
       <>

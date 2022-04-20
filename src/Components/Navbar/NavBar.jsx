@@ -3,6 +3,7 @@ import NavItem from "./NavItem";
 import CartWidget from "./CartWidget";
 import { RiMenu4Line, RiCloseLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
+import logo from '../../Images/logo.png';
 
 export default function NavBar() {
 
@@ -28,7 +29,7 @@ export default function NavBar() {
             <div className="max-w-screen-2xl m-auto justify-between items-center md:flex xl:px-24">
             <div className="flex items-center justify-between">
                 <Link to={`/`}>
-                    <img className="w-16 h-14 p-2 ml-10" src="./logo192.png" alt="logo" />
+                    <img className="w-14 h-14 p-2 ml-10" src={logo} alt="logo" />
                 </Link>
                 <CartWidget count={10} className="md:hidden flex" />
                 {showNav ? (
@@ -44,9 +45,9 @@ export default function NavBar() {
                 )}
             </div>
             <ul className={(showNav ? "right-0" : "-right-full") + " md:static fixed bottom-0 top-14 md:flex md:space-x-7 items-center bg-slate-100 md:bg-transparent md:text-violet-100 md:w-auto w-6/12 md:space-y-0 space-y-5 p-4 px-8 transition-right"}>
-                <NavItem content="Home" href="/home"/>
-                <NavItem content="Shop" href="/shop" />
-                <NavItem content="Contact" href="/contact" />
+                <NavItem content="Home" to="/"/>
+                <NavItem content="Shop" to="" />
+                <NavItem content="Contact" to="" />
                 <CartWidget count={10} className="hidden md:flex" />
             </ul>
             </div>
