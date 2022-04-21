@@ -20,8 +20,6 @@ function ItemDetailContainer() {
             })
     }, [filterId])
 
-    console.log(item)
-
     return (
     <>
         {loading ? (

@@ -14,22 +14,18 @@ export default function NavBar() {
     const [color, setColor] = useState(false);
     
     const changeColor = (() => {
-        if(window.scrollY >= window.innerHeight) {
-            setColor(true)
-        }else {
-            setColor(false)
-        }
+        window.scrollY >= window.innerHeight - 60 ? setColor(true) : setColor(false)       
     })
 
     window.addEventListener('scroll', changeColor)
 
     return (
         <> 
-        <nav className={(color ? 'bg-[#240347]' : '') + " sticky top-0 z-10"}>
+        <nav className={(color ? 'bg-[#240347]' : '') + " sticky top-0 z-10 px-1"}>
             <div className="max-w-screen-2xl m-auto justify-between items-center md:flex xl:px-24">
             <div className="flex items-center justify-between">
                 <Link to={`/`}>
-                    <img className="w-14 h-14 p-2 ml-10" src={logo} alt="logo" />
+                    <img className="w-14 h-14 p-2 lg:ml-10" src={logo} alt="logo" />
                 </Link>
                 <CartWidget count={10} className="md:hidden flex" />
                 {showNav ? (
