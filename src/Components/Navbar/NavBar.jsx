@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../Images/logo.png';
 
 export default function NavBar() {
-
+    
     //mobile nav
     const [showNav, setShowNav] = useState(false);
 
@@ -27,7 +27,7 @@ export default function NavBar() {
                 <Link to={`/`}>
                     <img className="w-14 h-14 p-2 lg:ml-10" src={logo} alt="logo" />
                 </Link>
-                <CartWidget count={10} className="md:hidden flex" />
+                <CartWidget className="md:hidden flex" />
                 {showNav ? (
                     <RiCloseLine
                     onClick={() => setShowNav(!showNav)}
@@ -40,7 +40,7 @@ export default function NavBar() {
                     />
                 )}
             </div>
-            <ul className={(showNav ? "right-0" : "-right-full") + " md:static fixed bottom-0 top-14 md:flex md:space-x-7 items-center bg-slate-100 md:bg-transparent md:text-violet-100 md:w-auto w-6/12 md:space-y-0 space-y-5 p-4 px-8 transition-right"}>
+            <ul className={(showNav ? "right-0" : "-right-full") + " md:static fixed bottom-0 top-14 md:flex md:space-x-7 items-center bg-white md:bg-transparent md:text-white md:w-auto w-6/12 md:space-y-0 space-y-5 p-4 px-8 transition-right"}>
                 <NavItem content="Home" to="/"/>
                 <NavItem content="Shop" to="" />
                 <NavItem content="Contact" to="" />

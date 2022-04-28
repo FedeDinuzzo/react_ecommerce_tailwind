@@ -3,7 +3,7 @@ import "./item.css"
 
 const COMMON_STYLES = " flex justify-center align-center h-10 w-10 rounded-full bg-[#240347] text-white "; 
 
-const ItemCount = ({initial, stock, onAdd}) => {
+const ItemCount = ({initial, stock, onAdd, product}) => {
     
     const [count, setCounter] = useState(initial);
 
@@ -23,7 +23,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
                 <button onClick={decrease} className={COMMON_STYLES}>-</button>
                 <div class="mx-2 h-10 w-14 rounded bg-white text-slate-800">{count}</div>
                 <button onClick={increase} className={COMMON_STYLES}>+</button>
-                <button onClick={() => onAdd(count)}
+                <button onClick={() => {onAdd({...product, count})}}
                 className="fondo flex w-full rounded px-2 py-1 m-auto justify-center align-center text-white text-2xl"
                 >Add to Cart</button>
             </div>   

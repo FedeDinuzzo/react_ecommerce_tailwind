@@ -8,8 +8,9 @@ function Hero() {
           <h1 className="font-bold text-7xl md:text-8xl text-white">Tienda Online NFT Market</h1>
           <button className="p-2 rounded mt-12 text-3xl bg-white">Ver Productos</button>
         </div>
-        <img className=" m-auto px-8 xl:px-4 rounded" src="https://cdn.mos.cms.futurecdn.net/cQxWKLFpJYCFdJgc4276ag.jpg" alt=""/>
-      </div>
+        <div className="m-auto max-w-2xl px-8 xl:px-4">
+        <img className="rounded" src="https://cdn.mos.cms.futurecdn.net/cQxWKLFpJYCFdJgc4276ag.jpg" alt=""/>
+      </div></div>
     </section>
   )
 }

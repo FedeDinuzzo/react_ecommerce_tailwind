@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useContext } from 'react'
+import { Context } from '../../CartContext/ContextProvider';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-const COMMON_STYLES =
-    //separar el texto de las comillas en las variables de estilos para el correcto funcionamiento
-    " flex justify-center items-center rounded-full text-white "; 
+const COMMON_STYLES = " flex justify-center items-center rounded-full text-white"; 
 
-export default function CartWidget({ count, className }) {
+export default function CartWidget({ className }) {
+
+    let { cart } = useContext(Context);
+
     return (
-        <> 
-        <button className = {className + COMMON_STYLES + "relative w-7 h-7 bg-violet-600"}>
+        <>
+        <button className = {className + COMMON_STYLES + "w-7 h-7 bg-violet-600"}>
             <AiOutlineShoppingCart class="w-5 h-5"/>
-            <div className = {COMMON_STYLES + "w-5 h-5 bg-violet-900 text-xs absolute -top-2 -right-2 font-semibold"}>
-                {count  <= 9 ? count : "9+"}
+            <div className = {COMMON_STYLES + "w-5 h-5 bg-violet-900 text-xs font-semibold"}>
+                {cart <= 9 ? cart : "9+"}
             </div>
         </button>
         </>

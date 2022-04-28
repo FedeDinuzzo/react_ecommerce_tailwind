@@ -10,7 +10,10 @@ function ItemCart () {
             <div className="flex flex-wrap justify-center w-56 m-2">
                 <Link to={`/cart`}>
                     <button className="fondo flex w-full rounded px-2 py-1 m-auto justify-center align-center text-white text-2xl">See On Cart</button>
-                </Link>           
+                </Link> 
+                <Link to={`/`}>
+                    <button className="fondo flex w-full rounded px-2 py-1 mt-4 m-auto justify-center align-center text-white text-xl">Continue Shopping</button>
+                </Link>              
             </div>   
         </div>
         </>
