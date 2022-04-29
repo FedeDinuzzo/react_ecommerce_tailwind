@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Context } from '../../CartContext/ContextProvider';
 import ItemCount from './ItemCount';
 import ItemCart from './ItemCart';
@@ -6,7 +6,14 @@ import "./item.css"
 
 function ItemDetail({ product }) {
 
-    let { cart, addToCart } = useContext(Context);
+    let { addToCart } = useContext(Context);
+
+    const [count, setCount] = useState(0);
+
+    const onAdd = (product, count) => {
+        setCount(count);
+        addToCart(product, count);
+    }
 
     return (        
     <>
@@ -17,9 +24,10 @@ function ItemDetail({ product }) {
                 <h3 className="">${product.price}</h3>
                 <h3 className="">{product.name}</h3>
                 <p className="">{product.description}</p>
-                
-                     <ItemCount initial={1} stock={product.stock} onAdd={addToCart} product={product} /> 
-                     <ItemCart />  
+                { count === 0 ? 
+                    <ItemCount initial={1} stock={product.stock} onAdd={onAdd} product={product} />
+                    : <ItemCart product={product} />
+                }
             </div>
         </div>
     </>

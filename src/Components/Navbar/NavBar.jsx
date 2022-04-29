@@ -44,7 +44,7 @@ export default function NavBar() {
                 <NavItem content="Home" to="/"/>
                 <NavItem content="Shop" to="" />
                 <NavItem content="Contact" to="" />
-                <CartWidget count={10} className="hidden md:flex" />
+                <CartWidget className="hidden md:flex" />
             </ul>
             </div>
         </nav>
