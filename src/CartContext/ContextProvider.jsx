@@ -27,14 +27,10 @@ export default function ContextProvider({children}) {
   function clear() {
     setCart([]);
   }
-
-  function buyAll(product) {
-    console.log(product)
-  }
   
   return (
     <>
-      <Context.Provider value={{ cart, setCart, addToCart, removeItem, clear, buyAll }}>
+      <Context.Provider value={{ cart, setCart, addToCart, removeItem, clear }}>
         {children}
       </Context.Provider>
     </>

@@ -5,12 +5,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-/*ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);*/
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCYPImaztf-kCoIYIGKhtwZjv1Z-jdc8mk",
+  authDomain: "react-ecommerce-tailwind.firebaseapp.com",
+  projectId: "react-ecommerce-tailwind",
+  storageBucket: "react-ecommerce-tailwind.appspot.com",
+  messagingSenderId: "117450974125",
+  appId: "1:117450974125:web:b1627b64b66a5e26eb7724"
+};
+
+initializeApp(firebaseConfig);
 
 createRoot(
   document.getElementById('root')).render(

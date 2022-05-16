@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import customFetch from '../../Utils/customFetch';
-import { products } from '../../Utils/products';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
+import {doc, getDoc, getFirestore } from 'firebase/firestore';
 
 function ItemDetailContainer() {
 
-    const [item, setItem] = useState([])
+    const [item, setItem] = useState({})
     const [loading, setLoading] = useState(true)
     const {id} = useParams()
-    const filterId = products.find(item => item.id === Number(id))
 
     useEffect(() => {
-        customFetch(1000, filterId)
-            .then(res => setItem(res))
-            .catch(error => console.log(error))
-            .finally(() => { 
-                setLoading(false);
-            })
-    }, [filterId])
+        const db = getFirestore();
+        const queryDb = doc(db, 'products', id);
+        getDoc(queryDb)
+        .then((res) => setItem({id: res.id, ...res.data()}))
+        .catch(error => console.log(error))
+        .finally(() => setLoading(false))
+    }, [id]);
 
     return (
     <>

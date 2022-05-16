@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import "./item.css"
 
 function ItemCart () { 
-
     return (
         <> 
         <div className="flex justify-center text-center text-3xl text-white">

@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFoundPage from "./Components/NotFoundPage";
 import "./App.css"
 import ContextProvider from "./CartContext/ContextProvider";
+import Form from "./Components/Form";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <NavBar />
         
           <Routes>
+          <Route path="/Form" element={<Form />}/>   
             <Route path="/" element={<ItemListContainer />}/>   
             <Route path="/category/:category" element={<ItemListContainer />}/>      
             <Route path="/item/:id" element={<ItemDetailContainer />}/> 
