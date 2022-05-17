@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavItem from "./NavItem";
 import CartWidget from "./CartWidget";
 import { RiMenu4Line, RiCloseLine } from "react-icons/ri";
-import { Link } from 'react-router-dom';
+import { Link } from "react-scroll";
 import logo from '../../Images/logo.png';
 
 export default function NavBar() {
@@ -40,10 +40,10 @@ export default function NavBar() {
                     />
                 )}
             </div>
-            <ul className={(showNav ? "right-0" : "-right-full") + " md:static fixed bottom-0 top-14 md:flex md:space-x-7 items-center bg-white md:bg-transparent md:text-white md:w-auto w-6/12 md:space-y-0 space-y-5 p-4 px-8 transition-right"}>
-                <NavItem content="HOME" to="/"/>
-                <NavItem content="SHOP" to="" />
-                <NavItem content="CONTACT" to="" />
+            <ul className={(showNav ? "right-0" : "-right-full") + " text-white md:static fixed bottom-0 top-14 md:flex md:space-x-7 items-center bg-gray-700 rounded-l-lg md:bg-transparent md:text-white md:w-auto w-6/12 md:space-y-0 space-y-5 p-4 px-8 transition-right"}>
+                <Link to="top" smooth={true}><NavItem content="HOME" to="/"/></Link>
+                <Link to="shop" smooth={true}><button className="text-lg block">SHOP</button></Link>
+                <Link to="footer" smooth={true}><button className="text-lg">CONTACT</button></Link>
                 <CartWidget className="hidden md:flex" />
             </ul>
             </div>

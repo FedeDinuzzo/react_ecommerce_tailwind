@@ -1,15 +1,15 @@
-import React from 'react'
-import Item from './Item'
+import React from 'react';
+import Item from './Item';
 
-function ItemList({ products }) {
+function ItemList({ products, visible }) {
 
   return (
     <>
-    {products.map((item, id) => 
+    {products.slice(0, visible).map((item, id) => 
         <Item key={id} {...item} />
-    )}
+    )} 
     </>
   )
-}
+};
 
 export default ItemList

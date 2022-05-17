@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import customFetch from '../../Utils/customFetch';
-import { products } from '../../Utils/products';
 import ItemList from './ItemList';
 import Hero from '../Hero'
 import { useParams } from 'react-router-dom';
@@ -10,9 +8,14 @@ import {collection, getDocs, getFirestore, query, where } from 'firebase/firesto
 
 function ItemListContainer() {
 
-  const [items, setItems] = useState([])
-  const [loading, setLoading] = useState(true)
-  const { category } = useParams()
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { category } = useParams();
+  const [visible, setVisible] = useState(12);
+
+  const showMoreItems = () => {
+    setVisible((prevValue) => prevValue + 12) ;
+  };
 
   useEffect(() => {
     const db = getFirestore();
@@ -31,9 +34,12 @@ function ItemListContainer() {
         <Hero />
         <Categories /> 
         {loading ? <h1>cargando</h1> :  
-          <div className=" bg-gray-50">
-            <div className="z-10 grid mx-auto py-20 p-2 sm:grid-cols-1 md:grid-cols-2 md:max-w-2xl lg:grid-cols-3 lg:max-w-4xl xl:grid-cols-4 xl:max-w-7xl">
-              <ItemList products={items} />
+          <div className="bg-gray-50">
+            <div className="z-10 grid mx-auto pt-20 pb-16 p-2 sm:grid-cols-1 md:grid-cols-2 md:max-w-2xl lg:grid-cols-3 lg:max-w-4xl xl:grid-cols-4 xl:max-w-7xl">
+              <ItemList products={items} visible={visible} />
+            </div>
+            <div className="pb-28">
+              {items.length < 12 ? "" : <button onClick={showMoreItems} className="grid mx-auto fondo w-36 rounded text-white text-xl p-2 ">LOAD MORE</button>}
             </div>
           </div>
         }

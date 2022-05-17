@@ -6,7 +6,7 @@ const COMMON_STYLES = " fondo w-24 mx-3 rounded text-white p-2 my-2";
 function Categories() {
   return (
     <>
-    <div  id="shop" className="max-w-screen px-12 bg-gray-50">
+    <div id="shop" className="max-w-screen px-12 bg-gray-50">
       <h1 className="flex justify-center align-center pt-20 text-4xl md:text-6xl font-bold">Categories</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 max-w-lg m-auto place-items-center pt-8">
         <Link to={`/`}>

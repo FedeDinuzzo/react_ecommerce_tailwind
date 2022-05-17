@@ -7,17 +7,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFoundPage from "./Components/NotFoundPage";
 import "./App.css"
 import ContextProvider from "./CartContext/ContextProvider";
-import Form from "./Components/Form";
+import Footer from "./Components/Footer"
 
 export default function App() {
-  return (
+  return ( 
     <>  
       <ContextProvider>
         <BrowserRouter>
           <NavBar />
         
-          <Routes>
-          <Route path="/Form" element={<Form />}/>   
+          <Routes>   
             <Route path="/" element={<ItemListContainer />}/>   
             <Route path="/category/:category" element={<ItemListContainer />}/>      
             <Route path="/item/:id" element={<ItemDetailContainer />}/> 
@@ -25,7 +24,7 @@ export default function App() {
             <Route path="*" element={<NotFoundPage />}/>    
           </Routes>
 
-          {/*<Footer />*/}
+          <Footer />
         </BrowserRouter>
       </ContextProvider>
     </>
