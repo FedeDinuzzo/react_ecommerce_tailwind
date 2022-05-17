@@ -28,7 +28,7 @@ const Cart = () => {
         const orderCollection = collection(db, 'orders') 
         await addDoc(orderCollection, order)
             .then(resp => setOrderId(resp.id))
-            .catch(err => console.log(err)) 
+            .catch(err => console.npg(err)) 
             .finally(()=> { clear(); setBuyer(inputInitialBuyer); }) 
         order.total = 0
         order.buyer.items = cart.map(prod => {

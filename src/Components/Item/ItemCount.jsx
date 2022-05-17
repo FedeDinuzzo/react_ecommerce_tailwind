@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./item.css"
 
-const COMMON_STYLES = " flex justify-center align-center h-9 w-9 rounded-full bg-black text-white "; 
+const COMMON_STYLES = " fondo text-center h-9 w-9 rounded-full text-white"; 
 
 const ItemCount = ({initial, stock, onAdd, product}) => {
     
@@ -18,14 +18,14 @@ const ItemCount = ({initial, stock, onAdd, product}) => {
 
     return (
         <> 
-        <div className="flex justify-center text-center text-3xl text-white">
-            <div className="mt-4 flex flex-wrap justify-center w-56 m-2">
-                <button onClick={decrease} className={COMMON_STYLES}>-</button>
-                <div class="mx-2 h-10 w-14 rounded bg-white text-black">{count}</div>
+        <div className="text-center flex justify-center lg:justify-start text-3xl text-white">
+            <div className="mt-4 flex flex-wrap lg:ml-0 w-56 m-2 justify-center lg:justify-start">
+                <button onClick={decrease} className={COMMON_STYLES + " lg:ml-6"}>-</button>
+                <div class="h-10 w-14 rounded bg-white text-black">{count}</div>
                 <button onClick={increase} className={COMMON_STYLES}>+</button>
                 <button onClick={() => onAdd(product, count)}
-                className="fondo mt-4 flex w-full rounded px-2 py-1 m-auto justify-center align-center text-white text-2xl"
-                >Add to Cart</button>
+                className="fondo mt-4 flex rounded px-6 py-1 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200"
+                >ADD TO CART</button>
             </div>   
         </div>
         </>

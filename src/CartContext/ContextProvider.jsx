@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { toast } from "react-toastify";
 
 export const Context = createContext();
 
@@ -19,12 +18,10 @@ export default function ContextProvider({children}) {
     
     if (productIndex === -1) {
       setCart([...cart, product]);
-      toast.info("increased product quantity", {position: "bottom-left"});
     } else {
       const newCart = [...cart];
       newCart[productIndex].quantity += quantity;
       setCart(newCart);
-      toast.success(`added a new product to cart`, {position: "bottom-left"});
     }   
     console.log(product)
   }

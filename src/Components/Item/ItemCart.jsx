@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./item.css"
 
+const COMMON_STYLES = " fondo w-48 rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200"; 
+
 function ItemCart () { 
     return (
         <> 
-        <div className="flex justify-center text-center text-3xl text-white">
-            <div className="flex flex-wrap justify-center w-56 m-2">
+        <div className="mt-4">
+            <div className="grid lg:grid-cols-2">
                 <Link to={`/cart`}>
-                    <button className="fondo flex w-full rounded px-2 py-1 m-auto justify-center align-center text-white text-2xl">See On Cart</button>
+                    <button className={COMMON_STYLES}>SEE ON CART</button>
                 </Link> 
                 <Link to={`/`}>
-                    <button className="fondo flex w-full rounded px-2 py-1 mt-4 m-auto justify-center align-center text-white text-xl">Continue Shopping</button>
+                    <button className={COMMON_STYLES + " mt-4 lg:mt-0 lg:-ml-4 xl:-ml-12"}>KEEP SHOPPING</button>
                 </Link>              
             </div>   
         </div>
