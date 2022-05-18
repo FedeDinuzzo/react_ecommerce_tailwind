@@ -4,7 +4,7 @@ import Hero from '../Hero'
 import { useParams } from 'react-router-dom';
 import Categories from '../Categories';
 import {collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
-
+import Loader from '../Loader';
 
 function ItemListContainer() {
 
@@ -33,7 +33,7 @@ function ItemListContainer() {
       <>
         <Hero />
         <Categories /> 
-        {loading ? <h1>cargando</h1> :  
+        {loading ? <div className="bg-gray-50 h-screen grid justify-center pt-40"><Loader /></div> :  
           <div className="bg-gray-50">
             <div className="z-10 grid mx-auto pt-20 pb-16 p-2 sm:grid-cols-1 md:grid-cols-2 md:max-w-2xl lg:grid-cols-3 lg:max-w-4xl xl:grid-cols-4 xl:max-w-7xl">
               <ItemList products={items} visible={visible} />

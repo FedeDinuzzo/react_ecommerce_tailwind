@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
 import {doc, getDoc, getFirestore } from 'firebase/firestore';
+import Loader from '../Loader';
 
 function ItemDetailContainer() {
 
@@ -20,11 +21,8 @@ function ItemDetailContainer() {
 
     return (
     <>
-        {loading ? (
-            <h1>cargando</h1>
-        ) : (
-            <ItemDetail product={item} />
-        )}
+        {loading ? <div className="h-96 grid justify-center pb-96"><Loader /></div> 
+        : <ItemDetail product={item} /> }
     </>
     )
 }

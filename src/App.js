@@ -8,6 +8,7 @@ import NotFoundPage from "./Components/NotFoundPage";
 import "./App.css"
 import ContextProvider from "./CartContext/ContextProvider";
 import Footer from "./Components/Footer"
+import Checkout from "./Components/Checkout";
 
 export default function App() {
   return ( 
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/category/:category" element={<ItemListContainer />}/>      
             <Route path="/item/:id" element={<ItemDetailContainer />}/> 
             <Route path="/cart" element={<Cart />}/>
+            <Route path="/checkout" element={<Checkout />}/>
             <Route path="*" element={<NotFoundPage />}/>    
           </Routes>
 

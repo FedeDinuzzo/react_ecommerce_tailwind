@@ -24,8 +24,8 @@ export default function NavBar() {
         <nav className={(color ? 'bg-black' : '') + " sticky top-0 z-10 px-1"}>
             <div className="max-w-screen-2xl m-auto justify-between items-center md:flex xl:px-24">
             <div className="flex items-center justify-between">
-                <Link to={`/`}>
-                    <img className="w-16 p-2 lg:ml-10 cursor-pointer" src={logo} alt="logo" />
+                <Link to="top" smooth={true}>
+                    <img className="w-16 p-2 lg:ml-10 cursor-pointer" src={logo} alt="logo"/>
                 </Link>
                 <CartWidget className="md:hidden flex cursor-pointer" />
                 {showNav ? (

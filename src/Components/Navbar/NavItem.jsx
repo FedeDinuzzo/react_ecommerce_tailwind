@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 export default function NavItem({ content, to }) {
     return (
-        <li className="text-lg">
+        <div className="text-lg cursor-pointer">
             <Link to={`${to}`}>{content}</Link>
-        </li>
+        </div>
     );
 }
 

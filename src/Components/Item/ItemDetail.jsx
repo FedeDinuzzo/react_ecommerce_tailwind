@@ -29,7 +29,7 @@ function ItemDetail({ product }) {
 
     return (        
     <>
-    <div className="fondo -m-16 h-16 mb-4"></div>
+    <div className="fondo -m-16 h-16 mb-4 lg:mb-20"></div>
         <div key={product.id} className="grid lg:grid-cols-2 justify-center mx-auto xl:max-w-7xl lg:-mt-16 mb-12">
             <div className="m-4">
                 <h3 className="lg:hidden text-gray-400 text-2xl md:text-3xl">{product.name}</h3>
@@ -41,7 +41,7 @@ function ItemDetail({ product }) {
                 {product.imgMin.map((img, index)=> ( 
                     <img src={img} key={index} alt="" 
                     onClick={() => bigImage(index)}
-                    className="hover:bg-gray-200 mx-auto my-1 border-2" />
+                    className="hover:bg-gray-200 mx-auto my-1 border-2 cursor-pointer" />
                 ))}
                 </div>
             </div>

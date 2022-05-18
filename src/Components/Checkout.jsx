@@ -1,7 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useState, useEffect } from 'react'
 import { Context } from '../CartContext/ContextProvider';
+import { addDoc, collection, getFirestore } from 'firebase/firestore'
+import { Link } from 'react-router-dom';
 
 function Form() {
+  
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -27,10 +30,11 @@ function Form() {
 
   return (
     <>
+    
       <input type="text" value={name} onChange={(e) => {setName(e.currentTarget.value)}} className=""/>
       <input type="text" value={email} onChange={(e) => {setEmail(e.currentTarget.value)}} className=""/>
       <input type="text" value={phone} onChange={(e) => {setPhone(e.currentTarget.value)}} className=""/>
-      <button onClick={() => {finishBuying()}} className="">BUY</button>
+  <button onClick={() => {finishBuying()}} className="">BUY</button>
     </>
   )
 }
