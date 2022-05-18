@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 
 function Form({ product}) {
 
-  const [orderId, setOrderId] = useState('') 
-  const { cart, finalPrice } = useContext(Context);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+
+  const [orderId, setOrderId] = useState('') 
+  const { cart, finalPrice,clear } = useContext(Context);
   const cartOrder = cart.map(prod => ("name: " + prod.name + " price: $" + prod.price + " quantity: " + prod.quantity + " id: " + prod.id));
 
   function finishBuying(){
@@ -29,19 +30,18 @@ function Form({ product}) {
 
   return (
     <>
-      <div className="mt-32 pb-32 bg-slate-700">
+    <div className="mt-32 pb-32 bg-slate-700">
       <input type="text" value={name} onChange={(e) => {setName(e.currentTarget.value)}} className="m-4"/>
       <input type="text" value={email} onChange={(e) => {setEmail(e.currentTarget.value)}} className="m-4"/>
       <input type="text" value={phone} onChange={(e) => {setPhone(e.currentTarget.value)}} className="m-4"/>
-      <button onClick={() => {finishBuying()}} className="">PURCHASE</button>
+      <button onClick={() => finishBuying()} className="">PURCHASE</button>
     </div>
-     {orderId &&
+    {orderId &&
         <div className="pb-72">
           <h1 className="pt-60 text-center text-green-400 text-4xl">PURCHASED COMPLETED</h1>
-          <p className="pt-4 text-center text-slate-700 text-3xl">YUOR ID: </p><p>{orderId}</p>
-          <Link to="/" className="mt-6 block m-auto fondo w-52 text-center rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200"><button>BACK TO HOME</button></Link>
-        </div>
-      }
+          <p className="pt-4 text-center text-slate-700 text-3xl">YOUR ORDER ID: {orderId}</p>
+          <Link to="/" ><button onClick={clear()} className="mt-6 block m-auto fondo w-52 text-center rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">BACK TO HOME</button></Link>
+        </div>}
     </>
   )
 }
