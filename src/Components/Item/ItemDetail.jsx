@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Context } from '../../CartContext/ContextProvider';
 import ItemCount from './ItemCount';
 import ItemCart from './ItemCart';
+import Loader from '../Loader';
 import "./item.css";
 
 function ItemDetail({ product }) {
@@ -15,15 +16,15 @@ function ItemDetail({ product }) {
     }
     
     const [index, setIndex] = useState(0);
+    const [imgLoaded, setImgLoaded] = useState([index]);
     
     const bigImage = (index) => {
         setIndex(index) 
-    } 
-    
+    }
     
     useEffect(() => {
-        
-    }, [index]);
+        setImgLoaded(imgLoaded)
+    }, [imgLoaded]);
 
     return (        
     <>

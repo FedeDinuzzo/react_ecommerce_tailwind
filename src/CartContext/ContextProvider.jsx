@@ -39,7 +39,7 @@ export default function ContextProvider({children}) {
     setCart([]);
   }
 
-  const finalPrice = cart.map((product) => Number(product.price * product.quantity)).reduce((a, b) => a + b, 0); 
+  const finalPrice = cart.map((product) => Number(product.price * product.quantity)).reduce((a, b) => a + b, 0);
   
   return (
     <>
