@@ -18,13 +18,12 @@ function ItemDetail({ product }) {
     
     const bigImage = (index) => {
         setIndex(index) 
-    }
+    } 
     
-    /*useEffect(() => {
+    
+    useEffect(() => {
         
-        .then((index) => setIndex(index))
-        .catch(error => console.log(error))
-    }, [index]);*/
+    }, [index]);
 
     return (        
     <>

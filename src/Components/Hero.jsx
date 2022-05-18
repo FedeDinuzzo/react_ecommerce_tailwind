@@ -16,8 +16,8 @@ function Hero() {
     tl.to({},0.016,{
       repeat: -1,
       onRepeat: function() {
-        posX += (mouseX - posX) / 10 ;
-        posY += (mouseY - posY) / 10 ;
+        posX += (mouseX - posX) / 30 ;
+        posY += (mouseY - posY) / 30 ;
         tl.set(cursor, {
           css: {
           left: posX / 12,

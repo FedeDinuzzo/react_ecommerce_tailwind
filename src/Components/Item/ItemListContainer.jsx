@@ -11,10 +11,14 @@ function ItemListContainer() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const { category } = useParams();
-  const [visible, setVisible] = useState(12);
+  const [visible, setVisible] = useState(8);
 
   const showMoreItems = () => {
-    setVisible((prevValue) => prevValue + 12) ;
+    setVisible((prevValue) => prevValue + 8) ;
+  };
+
+  const showLessItems = () => {
+    setVisible((prevValue) => prevValue - visible + 8) ;
   };
 
   useEffect(() => {
@@ -39,7 +43,7 @@ function ItemListContainer() {
               <ItemList products={items} visible={visible} />
             </div>
             <div className="pb-28">
-              {items.length < 12 ? ""
+              {items.length < visible ? <button onClick={showLessItems} className="hover:shadow-lg hover:shadow-blue-900/30 grid mx-auto fondo w-36 rounded text-white text-xl p-2 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">SHOW LESS</button>
               : <button onClick={showMoreItems} className="hover:shadow-lg hover:shadow-blue-900/30 grid mx-auto fondo w-36 rounded text-white text-xl p-2 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">LOAD MORE</button>}
             </div>
           </div>
