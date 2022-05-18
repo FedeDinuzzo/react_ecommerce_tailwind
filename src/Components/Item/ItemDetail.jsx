@@ -6,8 +6,7 @@ import "./item.css";
 
 function ItemDetail({ product }) {
 
-    let { addToCart } = useContext(Context);
-
+    let { addToCart } = useContext(Context)
     const [count, setCount] = useState(0);
 
     const onAdd = (product, count) => {

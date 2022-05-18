@@ -1,12 +1,11 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 export const Context = createContext();
-
 export default function ContextProvider({children}) {
   
-  const [cart, setCart] = useState([]);
-  const cartfromlocalstorage = JSON.parse(localStorage.getItem('cart')) || '[]';
-  console.log(cartfromlocalstorage)
+  const localCart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const [cart, setCart] = useState(localCart);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart))
@@ -18,12 +17,18 @@ export default function ContextProvider({children}) {
     
     if (productIndex === -1) {
       setCart([...cart, product]);
+      toast.success(`${product.name} added to cart`, {
+        position: "bottom-left",
+        width: "200px",
+      })
     } else {
       const newCart = [...cart];
       newCart[productIndex].quantity += quantity;
       setCart(newCart);
+      toast.info(`increased ${product.name} cart quantity`, {
+        position: "bottom-left",
+      })
     }   
-    console.log(product)
   }
 
   const removeItem = (id) => {
@@ -33,10 +38,12 @@ export default function ContextProvider({children}) {
   function clear() {
     setCart([]);
   }
+
+  const finalPrice = cart.map((product) => Number(product.price * product.quantity)).reduce((a, b) => a + b, 0); 
   
   return (
     <>
-      <Context.Provider value={{ cart, setCart, addToCart, removeItem, clear }}>
+      <Context.Provider value={{ cart, setCart, addToCart, removeItem, clear, finalPrice }}>
         {children}
       </Context.Provider>
     </>

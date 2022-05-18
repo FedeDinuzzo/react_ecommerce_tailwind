@@ -5,16 +5,19 @@ import ItemDetailContainer from "./Components/Item/ItemDetailContainer";
 import Cart from "./Components/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFoundPage from "./Components/NotFoundPage";
-import "./App.css"
+import "./App.css";
 import ContextProvider from "./CartContext/ContextProvider";
 import Footer from "./Components/Footer"
 import Checkout from "./Components/Checkout";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   return ( 
     <>  
       <ContextProvider>
         <BrowserRouter>
+          <ToastContainer />
           <NavBar />
         
           <Routes>   
