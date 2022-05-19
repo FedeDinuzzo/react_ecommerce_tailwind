@@ -1,24 +1,72 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../CartContext/ContextProvider';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 
-function Form({ product}) {
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-
+function Form() {
   const [orderId, setOrderId] = useState('') 
-  const { cart, finalPrice,clear } = useContext(Context);
+  const { cart, finalPrice, clear } = useContext(Context);
   const cartOrder = cart.map(prod => ("name: " + prod.name + " price: $" + prod.price + " quantity: " + prod.quantity + " id: " + prod.id));
+  
+  const initialValues = { name: "", email: "", phone: "" };
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
 
+  const handleChange = (e) => {
+    const { name, value} = e.target;
+    setFormValues({...formValues, [name]: value});
+    setIsSubmit(true);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormErrors(validate(formValues));
+    setIsSubmit(true);
+  }
+
+  useEffect(() => {
+    console.log(formErrors)
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(formValues);
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (!values.name) {
+      errors.name = "Name is required"
+    } else if(values.name.length < 6) {
+      errors.name = "Name must be more than 6 characters"
+    } else if(values.name.length > 30) {
+      errors.name = "Name cannot exceed more than 30 characters"
+    }
+    if (!values.email) {
+      errors.email = "Email is required"
+    } else if(!regex.test(values.email)) {
+      errors.email = "This is not Valid Email"
+    }
+    if (!values.phone) {
+      errors.phone = "Phone is required"
+    } else if(values.phone.length == 11) {
+      errors.phone = "Phone must have exactly 11 numbers"
+    }
+    return errors;
+  }
+
+  const [finishBuying, setFinishBuying] = useState(false);
+
+  useEffect(() => {
+     setFinishBuying(true)
+  }, [])
+  
   function finishBuying(){
     const db = getFirestore();
     const order = collection(db, 'orders')
-
-    let buyer = {
-      buyer: { name, phone, email },
+    
+    const buyer = {
+      buyer: formValues,
       items: cartOrder,
       finalPrice,
     };
@@ -30,12 +78,54 @@ function Form({ product}) {
 
   return (
     <>
-    <div className="mt-32 pb-32 bg-slate-700">
-      <input type="text" value={name} onChange={(e) => {setName(e.currentTarget.value)}} className="m-4"/>
-      <input type="text" value={email} onChange={(e) => {setEmail(e.currentTarget.value)}} className="m-4"/>
-      <input type="text" value={phone} onChange={(e) => {setPhone(e.currentTarget.value)}} className="m-4"/>
-      <button onClick={() => finishBuying()} className="">PURCHASE</button>
+    <div className="fondo -m-16 h-16 mb-4 lg:mb-20"></div>
+    <div className="mt-32 pb-32 bg-slate-700 text-center">
+      <h1 className="text-center">Purchase Form</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name</label>
+          <input 
+          type="text" 
+          name="name"
+          placeholder="Full Name" 
+          onChange={handleChange} 
+          value={formValues.name} 
+          className="block border-solid border-2 w-60 border-gray-500 rounded p-1 my-4 mx-auto"
+          />
+        </div> 
+        <p>{formErrors.name}</p>
+        <div>
+          <label>Email</label>
+          <input 
+          type="email" 
+          name="email"
+          placeholder="Email Adress" 
+          onChange={handleChange} 
+          value={formValues.email} 
+          className="block border-solid border-2 w-60 border-gray-500 rounded p-1 my-4 mx-auto"
+          />
+        </div>
+        <p>{formErrors.email}</p>
+        <div>
+          <label>Phone Number</label>
+          <input 
+          type="number" 
+          name="phone"
+          placeholder="Phone Number" 
+          onChange={handleChange} 
+          value={formValues.phone} 
+          className="block border-solid border-2 w-60 border-gray-500 rounded p-1 my-4 mx-auto"
+          />
+        </div>
+        <p>{formErrors.phone}</p>
+        <button
+        type="submit" 
+        value="PURCHASE"
+        onChange={handleChange}
+        className="fondo w-48 rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">hola</button>
+      </form>
     </div>
+    {Object.keys(formErrors).length === 0 && isSubmit ? (finishBuying()) : ''}
     {orderId &&
         <div className="pb-72">
           <h1 className="pt-60 text-center text-green-400 text-4xl">PURCHASED COMPLETED</h1>
@@ -47,61 +137,3 @@ function Form({ product}) {
 }
 
 export default Form
-
-/*function contactForm(){
-  const $form = document.querySelector(".contact-form"),
-  $inputs = document.querySelectorAll(".contact-form [required]");
-  
-  $inputs.forEach(input => {
-      const $span = document.createElement("span");
-      $span.id = input.name;
-      $span.textContent = input.title;
-      $span.classList.add("contact-form-error", "none")
-      input.insertAdjacentElement("afterend", $span);
-  });
-  
-  document.addEventListener("keyup", (e) => {
-      if (e.target.matches(".contact-form [required]")){
-          let $input = e.target,
-          pattern = $input.pattern || $input.dataset.pattern;
-      
-          if(pattern && $input.value !== ""){
-              let regex = new RegExp(pattern);
-              return !regex.exec($input.value)
-                  ? document.getElementById($input.name).classList.add("is-active")
-                  : document.getElementById($input.name).classList.remove("is-active")
-          }
-      }
-  });
-  
-  contactFormSubmitted.addEventListener("submit", (e) => {
-      e.preventDefault();
-  
-      const $loader = document.querySelector(".contact-form-loader"),
-      $response = document.querySelector(".contact-form-response");
-  
-      $loader.classList.remove("none");
-  
-      fetch("https://formsubmit.co/ajax/federicodinuzzo98@gmail.com",{
-          method: "POST",
-          body: new FormData(e.target)
-      })
-          .then(res => res.ok?res.json():Promise.reject(res))
-          .then(json => {
-              console.log(json);
-              $loader.classList.add("none");
-              $response.classList.remove("none");
-              $response.innerHTML = `<p class="form__submitted">${json.message}</p>`;
-              $form.reset();
-          })
-          .catch(err => {
-              console.log(err);
-              let message = err.statusText || "Ocurrio un error al enviar, intenta nuevamente";
-              $response.innerHTML = `<p>Error ${err.status}: ${message}</p>`;
-          })
-          .finally(() => setTimeout(() => {
-              $response.classList.add("none");
-              $response.innerHTML = "";
-          },3000));
-  });
-  }*/
