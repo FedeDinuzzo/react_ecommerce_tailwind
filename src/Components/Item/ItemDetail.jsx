@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Context } from '../../CartContext/ContextProvider';
 import ItemCount from './ItemCount';
 import ItemCart from './ItemCart';
-import Loader from '../Loader';
 import "./item.css";
 
 function ItemDetail({ product }) {

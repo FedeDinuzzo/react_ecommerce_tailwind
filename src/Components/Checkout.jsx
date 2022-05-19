@@ -2,36 +2,42 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../CartContext/ContextProvider';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
+import EmptyCart from './EmptyCart';
 
-function Form() {
+function CHeckout() {
+  //Order varaibles
   const [orderId, setOrderId] = useState('') 
   const { cart, finalPrice, clear } = useContext(Context);
   const cartOrder = cart.map(prod => ("name: " + prod.name + " price: $" + prod.price + " quantity: " + prod.quantity + " id: " + prod.id));
   
+  //Form varaibles
   const initialValues = { name: "", email: "", phone: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
+  //
   const handleChange = (e) => {
-    const { name, value} = e.target;
+    const { name, value } = e.target;
     setFormValues({...formValues, [name]: value});
     setIsSubmit(true);
   }
 
+  //
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
   }
 
+  //Set form errors
   useEffect(() => {
-    console.log(formErrors)
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
     }
   }, [formErrors]);
 
+  //Form validations
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -49,31 +55,36 @@ function Form() {
     }
     if (!values.phone) {
       errors.phone = "Phone is required"
-    } else if(values.phone.length == 11) {
+    } else if(values.phone.length < 11) {
+      errors.phone = "Phone must have exactly 11 numbers"
+    } else if(values.phone.length > 11) {
       errors.phone = "Phone must have exactly 11 numbers"
     }
     return errors;
   }
 
+  //If form is submitted generate order in firestore
   function finishBuying(){
-
     const db = getFirestore();
     const order = collection(db, 'orders');
 
-    const buyer = {
-      buyer: formValues,
-      items: cartOrder,
-      finalPrice,
-    };
+    if(isSubmit === true){
+      const buyer = {
+        buyer: formValues,
+        items: cartOrder,
+        finalPrice,
+      };
 
-    addDoc(order, buyer).then(({ id }) => {
-      setOrderId(id)
-    })
+      addDoc(order, buyer).then(({ id }) => {
+        setOrderId(id)
+      })
+    }
   }
 
   return (
     <>
     <div className="fondo -m-16 h-16 mb-4 lg:mb-20"></div>
+    { cart.length === 0 && isSubmit === false ? <EmptyCart /> :
     <div className="mt-32 pb-32 bg-slate-700 text-center">
       <h1 className="text-center">Purchase Form</h1>
       <form onSubmit={handleSubmit}>
@@ -117,18 +128,22 @@ function Form() {
         type="submit" 
         value="PURCHASE"
         onChange={handleChange}
-        className="fondo w-48 rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">SEND INFORMATION</button>
+        onClick={() => finishBuying()}
+        className="fondo w-48 rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">
+        PURCHASE
+        </button>
       </form>
     </div>
-    {Object.keys(formErrors).length === 0 && isSubmit ?  <button onClick={() => finishBuying()}>PURCHASE</button> : '' }
-    {orderId &&
-        <div className="pb-72">
-          <h1 className="pt-60 text-center text-green-400 text-4xl">PURCHASED COMPLETED</h1>
-          <p className="pt-4 text-center text-slate-700 text-3xl">YOUR ORDER ID: {orderId}</p>
-          <Link to="/" ><button onClick={clear()} className="mt-6 block m-auto fondo w-52 text-center rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">BACK TO HOME</button></Link>
-        </div>}
+    }
+    { orderId &&
+      <div className="pb-72">
+        <h1 className="pt-60 text-center text-green-400 text-4xl">PURCHASED COMPLETED</h1>
+        <p className="pt-4 text-center text-slate-700 text-3xl">YOUR ORDER ID: {orderId}</p>
+        <Link to="/" ><button onClick={clear()} className="mt-6 block m-auto fondo w-52 text-center rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">BACK TO HOME</button></Link>
+      </div>
+    }
     </>
   )
 }
 
-export default Form
+export default CHeckout
