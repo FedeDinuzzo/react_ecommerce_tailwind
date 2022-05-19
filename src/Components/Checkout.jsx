@@ -55,16 +55,11 @@ function Form() {
     return errors;
   }
 
-  const [finishBuying, setFinishBuying] = useState(false);
-
-  useEffect(() => {
-     setFinishBuying(true)
-  }, [])
-  
   function finishBuying(){
+
     const db = getFirestore();
-    const order = collection(db, 'orders')
-    
+    const order = collection(db, 'orders');
+
     const buyer = {
       buyer: formValues,
       items: cartOrder,
@@ -122,10 +117,10 @@ function Form() {
         type="submit" 
         value="PURCHASE"
         onChange={handleChange}
-        className="fondo w-48 rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">hola</button>
+        className="fondo w-48 rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">SEND INFORMATION</button>
       </form>
     </div>
-    {Object.keys(formErrors).length === 0 && isSubmit ? (finishBuying()) : ''}
+    {Object.keys(formErrors).length === 0 && isSubmit ?  <button onClick={() => finishBuying()}>PURCHASE</button> : '' }
     {orderId &&
         <div className="pb-72">
           <h1 className="pt-60 text-center text-green-400 text-4xl">PURCHASED COMPLETED</h1>
