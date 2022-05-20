@@ -1,6 +1,21 @@
 hablar de las librerias
 funcionamiento del ecommerce
 
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
+    "firebase": "^9.7.0",
+    "gsap": "^3.10.4",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-icons": "^4.3.1",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.0",
+    "react-scroll": "^1.8.7",
+    "react-toastify": "^9.0.1",
+    "spinners-react": "^1.0.7",
+    "web-vitals": "^2.1.4"
+
 
 
 
