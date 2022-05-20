@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import EmptyCart from './EmptyCart';
 
 export default function Cart() {
-
+  //Brings the logic from CartContext and rednderizes it in the cart path
   let { cart, finalPrice, removeItem, clear } = useContext(Context);
 
   return (

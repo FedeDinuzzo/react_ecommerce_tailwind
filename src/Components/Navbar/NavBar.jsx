@@ -7,10 +7,10 @@ import logo from '../../Images/logo.png';
 
 export default function NavBar() {
     
-    //mobile nav
+    //Mobile nav
     const [showNav, setShowNav] = useState(false);
 
-    //change navbar color on scrolling
+    //Change navbar color on scrolling
     const [color, setColor] = useState(false);
     
     const changeColor = (() => {

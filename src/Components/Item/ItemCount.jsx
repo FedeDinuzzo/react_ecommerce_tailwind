@@ -4,7 +4,6 @@ import "./item.css"
 const COMMON_STYLES = " fondo text-center h-9 w-9 rounded-full text-white"; 
 
 const ItemCount = ({initial, stock, onAdd, product}) => {
-    
     const [count, setCounter] = useState(initial);
 
     const increase = () => {

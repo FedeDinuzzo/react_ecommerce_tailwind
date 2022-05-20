@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import "./item.css"
 
 function Item({id, name, price, img}) {
-
+  //render the item and its design
   return (
     <div>
       <div class="m-4 flex flex-col justify-center">

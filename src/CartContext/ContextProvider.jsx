@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 export const Context = createContext();
+
 export default function ContextProvider({children}) {
   
   const localCart = JSON.parse(localStorage.getItem('cart') || '[]');

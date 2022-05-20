@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function EmptyCart() {
 
-  //Component for when cart is empty at Cart.jsx or at Checkout.jsx after buying (if the user reloads)
+  //Render for when cart is empty at Cart.jsx or at Checkout.jsx after buying (if the user reloads checkout)
   return (
     <>
         <div className="pb-72">

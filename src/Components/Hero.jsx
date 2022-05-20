@@ -12,6 +12,7 @@ function Hero() {
   let posY = 0;
   const onMouseMove = (e) => {mouseX = e.pageX; mouseY = e.pageY;}
   
+  //GSAP animation
   useEffect(() => {
     tl.to({},0.016,{
       repeat: -1,
@@ -37,7 +38,7 @@ function Hero() {
           <Link to="shop" smooth={true}><button className="py-2 px-6 rounded my-8 text-xl fondo text-white shadow-inner transition ease-in hover:translate-y-1 hover:scale-105 shadow-white/20  duration-300">GO SHOPPING</button></Link>
         </div>
         <div className="m-auto max-w-2xl px-8 xl:px-4 lg:pt-32">
-          <img ref={el => cursor = el} className="m-auto w-4/5 h-auto md:w-auto relative cover" src={watch} alt=""/>
+          <img ref={el => cursor = el} className="m-auto h-auto w-4/5 lg:w-auto relative cover" src={watch} alt=""/>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-let isOk = true;
+/*let isOk = true;
 
 const customFetch = (time, task, category) => {
   return new Promise ((resolve, reject) => {
@@ -14,4 +14,4 @@ const customFetch = (time, task, category) => {
   })
 }
 
-export default customFetch
+export default customFetch*/

@@ -9,8 +9,9 @@ export default function CartWidget({ className }) {
 
     let location = useLocation();
     let { cart } = useContext(Context);
-    
-    const allQuantity = cart.map((product) => product.quantity).reduce((a, b) => a + b, 0)
+
+    //Shows the sum of the products plus their quantities in the cart path
+    const allQuantity = cart.map((product) => product.quantity).reduce((a, b) => a + b, 0);
 
     return (
         <>

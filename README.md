@@ -1,4 +1,5 @@
-
+hablar de las librerias
+funcionamiento del ecommerce
 
 
 

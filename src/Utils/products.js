@@ -1,4 +1,4 @@
-export const products = [ 
+/*export const products = [ 
     {
         "id": 1,
         "name": "Wine - Casablanca Valley",
@@ -107,4 +107,4 @@ export const products = [
         "image": "http://dummyimage.com/200x250.png/ff4444/ffffff",
         "category": "Chicos"
     }
-]
+]*/
