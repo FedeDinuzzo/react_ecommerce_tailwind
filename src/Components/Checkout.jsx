@@ -19,22 +19,22 @@ function Checkout() {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
- console.log(loading)
-  //
+
+  //Track changes when writing to inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({...formValues, [name]: value});
     setIsSubmit(true);
   }
 
-  //
+  //Receive the form data if the form validation is successful.
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
   }
 
-  //Set form errors
+  //Conditions for formErrors
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
@@ -67,7 +67,7 @@ function Checkout() {
     return errors;
   }
 
-  //If form is submitted generate order in firestore and clear cart
+  //If form is submitted generate order in firestore, clear the cart and active loader until load the path
   function finishBuying(){
     const db = getFirestore();
     const order = collection(db, 'orders');
@@ -81,10 +81,11 @@ function Checkout() {
 
       addDoc(order, buyer).then(({ id }) => {
         setOrderId(id)
-      })
+      });
 
-      clear()
-      setLoading(true)
+      clear();
+
+      setLoading(true);
     }
   }
 
@@ -139,7 +140,7 @@ function Checkout() {
             type="submit" 
             value="PURCHASE"
             onChange={handleChange}
-            onClick={() => finishBuying() && clear()}
+            onClick={() => finishBuying()}
             className="fondo block m-auto w-48 rounded px-2 py-2 mt-6 mb-4 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">
             PURCHASE
             </button>
@@ -149,7 +150,7 @@ function Checkout() {
       </div>
     </div>
     }
-    { orderId !== "" && Object.keys(formErrors).length === 0 && <Navigate push to="/purchase-id"/>}
+    { orderId !== "" && Object.keys(formErrors).length === 0 && <Navigate push to="/purchase-id"/> }
     </>
   )
 }
