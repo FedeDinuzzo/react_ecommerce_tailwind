@@ -3,13 +3,13 @@ import { Context } from '../CartContext/ContextProvider';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { Navigate } from 'react-router-dom';
 import EmptyCart from './EmptyCart';
+import Loader from './Loader';
 
 const STYLES_LABEL = " block w-72 lg:w-80 mx-auto text-slate-500 font-bold"; 
 const STYLES_FORM = " block border-solid border-2 w-72 mb-6 lg:w-80 border-gray-200 rounded-lg p-2 pl-4 my-4 mx-auto";
 
 function Checkout() {
   //Order varaibles
-  
   const { cart, finalPrice, clear, orderId, setOrderId } = useContext(Context);
   const cartOrder = cart.map(prod => ("name: " + prod.name + " price: $" + prod.price + " quantity: " + prod.quantity + " id: " + prod.id));
   
@@ -18,7 +18,8 @@ function Checkout() {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+ console.log(loading)
   //
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,6 +84,7 @@ function Checkout() {
       })
 
       clear()
+      setLoading(true)
     }
   }
 
@@ -141,12 +143,13 @@ function Checkout() {
             className="fondo block m-auto w-48 rounded px-2 py-2 mt-6 mb-4 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">
             PURCHASE
             </button>
+            <div className="flex justify-center">{loading ? <Loader /> : ''}</div>
           </form>
         </div>
       </div>
     </div>
     }
-  { orderId !== "" && Object.keys(formErrors).length === 0 && <Navigate push to="/purchase-id"/>}
+    { orderId !== "" && Object.keys(formErrors).length === 0 && <Navigate push to="/purchase-id"/>}
     </>
   )
 }
