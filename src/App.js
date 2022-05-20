@@ -20,7 +20,6 @@ export default function App() {
       <ContextProvider>
         <BrowserRouter>
           <NavBar />
-          <ScrollToTop />
           <ToastContainer />  
 
           <Routes>   

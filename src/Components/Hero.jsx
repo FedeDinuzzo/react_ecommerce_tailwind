@@ -13,9 +13,11 @@ function Hero() {
   const onMouseMove = (e) => {mouseX = e.pageX; mouseY = e.pageY;}
   
   //GSAP animation
+  gsap.config({ nullTargetWarn: false });
+  
   useEffect(() => {
     tl.to({},0.016,{
-      repeat: -1,
+      repeat: -2,
       onRepeat: function() {
         posX += (mouseX - posX) / 10 ;
         posY += (mouseY - posY) / 10 ;

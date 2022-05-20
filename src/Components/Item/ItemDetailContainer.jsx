@@ -20,7 +20,7 @@ function ItemDetailContainer() {
 
     return (
     <>
-        {loading ? <div className="h-96 grid justify-center pb-96"><Loader /></div> 
+        {loading ? <div className="h-96 grid justify-center mt-48 pb-96"><Loader /></div> 
         : <ItemDetail product={item} /> }
     </>
     )

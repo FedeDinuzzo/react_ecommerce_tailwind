@@ -2,14 +2,17 @@ import React, { useContext } from 'react';
 import { Context } from '../CartContext/ContextProvider';
 import { Link } from 'react-router-dom';
 import EmptyCart from './EmptyCart';
+import ScrollToTop from './ScrollToTop';
 
 export default function Cart() {
   //Brings the logic from CartContext and rednderizes it in the cart path
   let { cart, finalPrice, removeItem, clear } = useContext(Context);
 
   return (
+    <>
+    <ScrollToTop />
     <div className="bg-gray-50">
-    <div className="fondo -m-16 h-16 mb-8"></div>
+        <div className="fondo -m-16 h-16 mb-8"></div>
         {cart.length === 0 ? <EmptyCart /> :
         <div className="m-auto px-4 max-w-5xl">
             <h1 className="text-gray-500 text-4xl lg:text-5xl py-2 text-center">CART</h1>
@@ -36,6 +39,7 @@ export default function Cart() {
             </div>
         </div>
         }
-    </div>
+        </div>
+    </>
   )
 }

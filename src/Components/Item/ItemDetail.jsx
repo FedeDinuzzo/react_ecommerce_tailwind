@@ -3,6 +3,7 @@ import { Context } from '../../CartContext/ContextProvider';
 import ItemCount from './ItemCount';
 import ItemCart from './ItemCart';
 import "./item.css";
+import ScrollToTop from '../ScrollToTop';
 
 function ItemDetail({ product }) {
 
@@ -27,6 +28,7 @@ function ItemDetail({ product }) {
 
     return (        
     <>
+    <ScrollToTop />
     <div className="fondo -m-16 h-16 mb-4 lg:mb-20"></div>
         <div key={product.id} className="grid lg:grid-cols-2 justify-center mx-auto xl:max-w-7xl lg:-mt-16 mb-12">
             <div className="m-4">
