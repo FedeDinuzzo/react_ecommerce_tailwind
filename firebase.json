@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "tag-heuer-react",
+    "public": "dsit",
     "ignore": [
       "firebase.json",
       "**/.*",
