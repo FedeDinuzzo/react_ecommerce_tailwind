@@ -12,15 +12,18 @@ import Checkout from "./Components/Checkout";
 import PurchaseComplete from "./Components/PurchaseComplete";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from "./Components/ScrollToTop";
 
 export default function App() {
   return ( 
     <>  
       <ContextProvider>
         <BrowserRouter>
+          
+          <ScrollToTop />
           <ToastContainer />
           <NavBar />
-        
+
           <Routes>   
             <Route path="/" element={<ItemListContainer />}/>   
             <Route path="/category/:category" element={<ItemListContainer />}/>      

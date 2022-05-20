@@ -38,12 +38,14 @@ export default function ContextProvider({children}) {
   function clear() {
     setCart([]);
   }
-
+  
   const finalPrice = cart.map((product) => Number(product.price * product.quantity)).reduce((a, b) => a + b, 0);
+
+  const [orderId, setOrderId] = useState('');
   
   return (
     <>
-      <Context.Provider value={{ cart, setCart, addToCart, removeItem, clear, finalPrice }}>
+      <Context.Provider value={{ cart, setCart, addToCart, removeItem, clear, finalPrice, orderId, setOrderId }}>
         {children}
       </Context.Provider>
     </>

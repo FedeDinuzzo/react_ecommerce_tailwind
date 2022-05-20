@@ -9,8 +9,8 @@ const STYLES_FORM = " block border-solid border-2 w-72 mb-6 lg:w-80 border-gray-
 
 function Checkout() {
   //Order varaibles
-  const [orderId, setOrderId] = useState('') 
-  const { cart, finalPrice, clear } = useContext(Context);
+  
+  const { cart, finalPrice, clear, orderId, setOrderId } = useContext(Context);
   const cartOrder = cart.map(prod => ("name: " + prod.name + " price: $" + prod.price + " quantity: " + prod.quantity + " id: " + prod.id));
   
   //Form varaibles
@@ -90,7 +90,8 @@ function Checkout() {
     <>
     <div className="fondo -m-16 h-16 mb-0"></div>
     { cart.length === 0 && isSubmit === false ? <EmptyCart /> :
-    <div className="pt-32 pb-32 bg-gray-50">
+    <div className="pt-20 pb-32 bg-gray-50">
+      <p className="text-center my-4 mb-8 text-gray-500 text-2xl">TOTAL PAYMENT: ${finalPrice}</p>
       <div class="relative group block m-auto max-w-md bg-gray-50 rounded-lg ">
         <div class="absolute mx-8 md:mx-0 -inset-1 bg-gradient-to-r from-green-300 to-gray-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"/>
         <div class="relative mx-8 md:mx-0 py-6 bg-white ring-1 ring-gray-900/5 rounded-xl leading-none">
@@ -145,7 +146,7 @@ function Checkout() {
       </div>
     </div>
     }
-    { orderId && <Navigate push to="/purchase-id"/> }
+  { orderId !== "" && Object.keys(formErrors).length === 0 && <Navigate push to="/purchase-id"/>}
     </>
   )
 }
