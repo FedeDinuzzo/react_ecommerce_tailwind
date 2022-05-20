@@ -1,17 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
 
 const COMMON_STYLES = " fondo w-24 mx-3 rounded text-white p-2 my-2 hover:shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200"; 
 
 function Categories() {
-  const { pathname } = useLocation();
-  
-  //change default ScrollToTop to stay in the place of catgeroies
-  useEffect(() => {
-    window.scrollTo(0, 1000);
-  }, [pathname]);
-
   return (
     <>
     <div id="shop" className="max-w-screen px-12 bg-gray-50">
