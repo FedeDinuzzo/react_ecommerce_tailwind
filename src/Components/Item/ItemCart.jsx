@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./item.css"
 
-const COMMON_STYLES = " fondo w-48 rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200"; 
+const COMMON_STYLES = " block m-auto lg:inline  fondo w-48 rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200"; 
 
 function ItemCart () { 
     return (

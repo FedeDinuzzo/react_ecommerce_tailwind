@@ -9,7 +9,7 @@ function Hero() {
     <section id="footer">
       <div className="bg-[url('./Images/footerBg.jpg')] m-auto bg-top">
         <div className="grid py-12 md:py-32 md:grid-cols-4 h-1/2 mx-auto xl:max-w-7xl">
-          <div className="bg-[url('./Images/logo-footer.svg')] h-12 md:h-20 bg-no-repeat mb-8 mx-12"></div>
+          <div className="bg-[url('./Images/logo-footer.svg')] h-12 md:h-20 bg-no-repeat mb-12 mx-12 ml-24 lg:ml-0"></div>
           <div className="md:m-auto px-8 xl:px-4 pb-4">  
             <h2 className="text-white text-2xl pb-4">CATEGORIES</h2>
             <Link to={`/category/formula 1`}><button className={COMMON_STYLES}>F1</button></Link>

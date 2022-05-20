@@ -16,8 +16,8 @@ function Hero() {
     tl.to({},0.016,{
       repeat: -1,
       onRepeat: function() {
-        posX += (mouseX - posX) / 30 ;
-        posY += (mouseY - posY) / 30 ;
+        posX += (mouseX - posX) / 10 ;
+        posY += (mouseY - posY) / 10 ;
         tl.set(cursor, {
           css: {
           left: posX / 12,
@@ -29,16 +29,16 @@ function Hero() {
   });
 
   return (
-    <section onMouseMove={onMouseMove}  id="top" className="fondo -mt-16 min-h-screen pb-20">
-      <div className="grid lg:pt-40 lg:grid-cols-2 h-auto mx-auto xl:max-w-7xl">
-        <div className='lg:my-32 pt-32 lg:pt-0 px-8 xl:px-4'>
+    <section onMouseMove={onMouseMove}  id="top" className=" fondo -mt-16 min-h-screen pb-20">
+      <div className="grid items-center pt-32 lg:pt-0 lg:grid-cols-2 h-screen m-auto xl:max-w-7xl">
+        <div className='grid lg:my-32  px-8 lg:pt-0 xl:px-4 '>
           <p className=" text-white">TAG HEUER QUALITY EVERYWHERE</p>
           <h1 className="font-bold text-5xl md:text-8xl text-white">The watch you need</h1>
           <Link to="shop" smooth={true}><button className="py-2 px-6 rounded my-8 text-xl fondo text-white shadow-inner transition ease-in hover:translate-y-1 hover:scale-105 shadow-white/20  duration-300">GO SHOPPING</button></Link>
         </div>
-        <div className="m-auto max-w-2xl px-8 xl:px-4">
-        <img ref={el => cursor = el} className="w-64 h-auto md:w-auto relative cover" src={watch} alt=""/>
-      </div>
+        <div className="m-auto max-w-2xl px-8 xl:px-4 lg:pt-32">
+          <img ref={el => cursor = el} className="m-auto w-4/5 h-auto md:w-auto relative cover" src={watch} alt=""/>
+        </div>
       </div>
     </section>
   )

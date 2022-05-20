@@ -4,6 +4,9 @@ import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import EmptyCart from './EmptyCart';
 
+const STYLES_LABEL = " block w-72 lg:w-80 mx-auto text-slate-500 font-bold"; 
+const STYLES_FORM = " block border-solid border-2 w-72 mb-6 lg:w-80 border-gray-200 rounded-lg p-2 pl-4 my-4 mx-auto";
+
 function CHeckout() {
   //Order varaibles
   const [orderId, setOrderId] = useState('') 
@@ -68,7 +71,7 @@ function CHeckout() {
     const db = getFirestore();
     const order = collection(db, 'orders');
 
-    if(isSubmit === true){
+    if(Object.keys(formErrors).length === 0 && isSubmit === true){
       const buyer = {
         buyer: formValues,
         items: cartOrder,
@@ -83,61 +86,66 @@ function CHeckout() {
 
   return (
     <>
-    <div className="fondo -m-16 h-16 mb-4 lg:mb-20"></div>
+    <div className="fondo -m-16 h-16 mb-0"></div>
     { cart.length === 0 && isSubmit === false ? <EmptyCart /> :
-    <div className="mt-32 pb-32 bg-slate-700 text-center">
-      <h1 className="text-center">Purchase Form</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name</label>
-          <input 
-          type="text" 
-          name="name"
-          placeholder="Full Name" 
-          onChange={handleChange} 
-          value={formValues.name} 
-          className="block border-solid border-2 w-60 border-gray-500 rounded p-1 my-4 mx-auto"
-          />
-        </div> 
-        <p>{formErrors.name}</p>
-        <div>
-          <label>Email</label>
-          <input 
-          type="email" 
-          name="email"
-          placeholder="Email Adress" 
-          onChange={handleChange} 
-          value={formValues.email} 
-          className="block border-solid border-2 w-60 border-gray-500 rounded p-1 my-4 mx-auto"
-          />
+    <div className="pt-32 pb-32 bg-gray-50">
+      <div class="relative group block m-auto max-w-md bg-gray-50 rounded-lg ">
+        <div class="absolute mx-8 md:mx-0 -inset-1 bg-gradient-to-r from-green-300 to-gray-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"/>
+        <div class="relative mx-8 md:mx-0 py-6 bg-white ring-1 ring-gray-900/5 rounded-xl leading-none">
+          <form onSubmit={handleSubmit}>
+            <h1 className="text-center my-4 mb-8 text-green-400 text-2xl">Purchase Form</h1>
+            <div>
+              <label className={STYLES_LABEL}>Name</label>
+              <input 
+              type="text" 
+              name="name"
+              placeholder="Full Name" 
+              onChange={handleChange} 
+              value={formValues.name} 
+              className={STYLES_FORM}
+              />
+            </div> 
+            <p className="text-red-500 text-center -mt-2 mb-4">{formErrors.name}</p>
+            <div>
+              <label className={STYLES_LABEL}>Email</label>
+              <input 
+              type="email" 
+              name="email"
+              placeholder="Email Adress" 
+              onChange={handleChange} 
+              value={formValues.email} 
+              className={STYLES_FORM}
+              />
+            </div>
+            <p className="text-red-500 text-center -mt-2 mb-4">{formErrors.email}</p>
+            <div>
+              <label className={STYLES_LABEL}>Phone Number</label>
+              <input 
+              type="number" 
+              name="phone"
+              placeholder="Phone Number" 
+              onChange={handleChange} 
+              value={formValues.phone} 
+              className={STYLES_FORM}
+              />
+            </div>
+            <p className="text-red-500 text-center -mt-2 mb-4">{formErrors.phone}</p>
+            <button
+            type="submit" 
+            value="PURCHASE"
+            onChange={handleChange}
+            onClick={() => finishBuying()}
+            className="fondo block m-auto w-48 rounded px-2 py-2 mt-6 mb-4 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">
+            PURCHASE
+            </button>
+          </form>
         </div>
-        <p>{formErrors.email}</p>
-        <div>
-          <label>Phone Number</label>
-          <input 
-          type="number" 
-          name="phone"
-          placeholder="Phone Number" 
-          onChange={handleChange} 
-          value={formValues.phone} 
-          className="block border-solid border-2 w-60 border-gray-500 rounded p-1 my-4 mx-auto"
-          />
-        </div>
-        <p>{formErrors.phone}</p>
-        <button
-        type="submit" 
-        value="PURCHASE"
-        onChange={handleChange}
-        onClick={() => finishBuying()}
-        className="fondo w-48 rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">
-        PURCHASE
-        </button>
-      </form>
+      </div>
     </div>
     }
     { orderId &&
       <div className="pb-72">
-        <h1 className="pt-60 text-center text-green-400 text-4xl">PURCHASED COMPLETED</h1>
+        <h1 className="pt-60 text-center text-green-400 text-4xl">PURCHASE COMPLETED</h1>
         <p className="pt-4 text-center text-slate-700 text-3xl">YOUR ORDER ID: {orderId}</p>
         <Link to="/" ><button onClick={clear()} className="mt-6 block m-auto fondo w-52 text-center rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">BACK TO HOME</button></Link>
       </div>

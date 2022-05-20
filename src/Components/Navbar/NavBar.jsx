@@ -14,7 +14,7 @@ export default function NavBar() {
     const [color, setColor] = useState(false);
     
     const changeColor = (() => {
-        window.scrollY >= 60 ? setColor(true) : setColor(false)       
+        window.scrollY >= 10 ? setColor(true) : setColor(false)       
     })
 
     window.addEventListener('scroll', changeColor)
