@@ -1,18 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Context } from '../CartContext/ContextProvider';
+import React, { useEffect, useState } from 'react';
+
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import { Navigate } from 'react-router-dom';
-import EmptyCart from './EmptyCart';
+import { Link } from 'react-router-dom';
+
 
 const STYLES_LABEL = " block w-72 lg:w-80 mx-auto text-slate-500 font-bold"; 
 const STYLES_FORM = " block border-solid border-2 w-72 mb-6 lg:w-80 border-gray-200 rounded-lg p-2 pl-4 my-4 mx-auto";
 
-function Checkout() {
-  //Order varaibles
-  const [orderId, setOrderId] = useState('') 
-  const { cart, finalPrice, clear } = useContext(Context);
-  const cartOrder = cart.map(prod => ("name: " + prod.name + " price: $" + prod.price + " quantity: " + prod.quantity + " id: " + prod.id));
-  
+function Form() {
   //Form varaibles
   const initialValues = { name: "", email: "", phone: "" };
   const [formValues, setFormValues] = useState(initialValues);
@@ -145,7 +140,13 @@ function Checkout() {
       </div>
     </div>
     }
-    { orderId && <Navigate push to="/purchase-id"/> }
+    { orderId &&
+      <div className="pb-72">
+        <h1 className="pt-60 text-center text-green-400 text-4xl">PURCHASE COMPLETED</h1>
+        <p className="pt-4 text-center text-slate-700 text-3xl">YOUR ORDER ID: {orderId}</p>
+        <Link to="/"><button className="mt-6 block m-auto fondo w-52 text-center rounded px-2 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200">BACK TO HOME</button></Link>
+      </div>
+    }
     </>
   )
 }

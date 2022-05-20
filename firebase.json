@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "tag-heuer-react",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
