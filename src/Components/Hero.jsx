@@ -17,7 +17,7 @@ function Hero() {
   
   useEffect(() => {
     tl.to({},0.016,{
-      repeat: -2,
+      repeat: -1,
       onRepeat: function() {
         posX += (mouseX - posX) / 10 ;
         posY += (mouseY - posY) / 10 ;
@@ -29,7 +29,7 @@ function Hero() {
         })
       }
     })
-  });
+  }, [onMouseMove]);
 
   return (
     <section onMouseMove={onMouseMove}  id="top" className=" fondo -mt-16 min-h-screen pb-20">

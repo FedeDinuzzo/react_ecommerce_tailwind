@@ -16,10 +16,15 @@ function Checkout() {
   
   //Form varaibles
   const initialValues = { name: "", email: "", phone: "" };
+  //const localFormValues = JSON.parse(localStorage.getItem('formValues') || ('initialValues'));
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   localStorage.setItem('formValues', JSON.stringify(formValues))
+  // })
 
   //Set formValues with the changes when writing to inputs
   const handleChange = (e) => {
@@ -51,6 +56,8 @@ function Checkout() {
       errors.name = "Name must be more than 6 characters"
     } else if(values.name.length > 30) {
       errors.name = "Name cannot exceed more than 30 characters"
+    } else if(values.name.match(/[0-9]/)) {
+      errors.name = "Name cannot have numbers"
     }
     if (!values.email) {
       errors.email = "Email is required"
@@ -60,9 +67,9 @@ function Checkout() {
     if (!values.phone) {
       errors.phone = "Phone is required"
     } else if(values.phone.length < 11) {
-      errors.phone = "Phone must have exactly 11 numbers"
+      errors.phone = "Phone must have 11 numbers Example: 11 2345-6789 (cannot have: spaces, +, -)"
     } else if(values.phone.length > 11) {
-      errors.phone = "Phone must have exactly 11 numbers"
+      errors.phone = "Phone must have 11 numbers"
     }
     return errors;
   }
@@ -134,7 +141,7 @@ function Checkout() {
               className={STYLES_FORM}
               />
             </div>
-            <p className="text-red-500 text-center -mt-2 mb-4">{formErrors.phone}</p>
+            <p className="block mx-auto text-red-500 text-center -mt-2 mb-4 w-60">{formErrors.phone}</p>
             <button
             type="submit" 
             value="PURCHASE"
