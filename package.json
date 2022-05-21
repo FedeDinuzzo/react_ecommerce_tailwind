@@ -20,15 +20,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "clean": "npx del dist",
-    "prebuild": "npm run clean",
-    "build:prod": "ELEVENTY_ENV=prod npx eleventy",
-    "predeploy": "npm run build:prod",
-    "deploy": "npx firebase deploy"
+    "build": "",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "npx firebase deploy",
+    "logs": "firebase functions:log"
   },
   "eslintConfig": {
     "extends": [
