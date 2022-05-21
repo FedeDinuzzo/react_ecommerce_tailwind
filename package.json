@@ -2,7 +2,6 @@
   "name": "react_ecommerce_tailwind",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/index.html",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
@@ -20,12 +19,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build": "",
-    "serve": "firebase serve --only functions",
-    "shell": "firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "npx firebase deploy",
-    "logs": "firebase functions:log"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
