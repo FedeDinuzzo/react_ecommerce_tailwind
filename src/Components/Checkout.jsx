@@ -67,7 +67,7 @@ function Checkout() {
     if (!values.phone) {
       errors.phone = "Phone is required"
     } else if(values.phone.length < 11) {
-      errors.phone = "Phone must have 11 numbers Example: 11 2345-6789 (cannot have: spaces, +, -)"
+      errors.phone = "Phone must have 11 numbers Example: 011 2345-6789 (cannot have: spaces, +, -)"
     } else if(values.phone.length > 11) {
       errors.phone = "Phone must have 11 numbers"
     }
@@ -99,11 +99,11 @@ function Checkout() {
     <ScrollToTop />
     <div className="fondo -m-16 h-16 mb-0"></div>
     { cart.length === 0 && isSubmit === false ? <EmptyCart /> :
-    <div className="pt-20 pb-32 bg-gray-50">
+    <div className="pt-8 pb-8 lg:pt-20 lg:pb-32 bg-gray-50">
       <p className="text-center my-4 mb-8 text-gray-500 text-2xl">TOTAL PAYMENT: ${finalPrice}</p>
       <div class="relative group block m-auto max-w-md bg-gray-50 rounded-lg ">
-        <div class="absolute mx-8 md:mx-0 -inset-1 bg-gradient-to-r from-green-300 to-gray-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"/>
-        <div class="relative mx-8 md:mx-0 py-6 bg-white ring-1 ring-gray-900/5 rounded-xl leading-none">
+        <div class="absolute mx-4 md:mx-0 -inset-1 bg-gradient-to-r from-green-300 to-gray-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"/>
+        <div class="relative mx-4 md:mx-0 py-6 bg-white ring-1 ring-gray-900/5 rounded-xl leading-none">
           <form onSubmit={handleSubmit}>
             <h1 className="text-center my-4 mb-8 text-green-400 text-2xl">Purchase Form</h1>
             <div>

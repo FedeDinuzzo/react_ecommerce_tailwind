@@ -23,7 +23,7 @@ const ItemCount = ({initial, stock, onAdd, product}) => {
                 <div class="h-10 w-14 rounded bg-white text-black">{count}</div>
                 <button onClick={increase} className={COMMON_STYLES}>+</button>
                 <button onClick={() => onAdd(product, count)}
-                className="fondo mt-4 flex rounded px-6 py-1 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200"
+                className="fondo mt-4 flex rounded px-6 py-2 text-white text-xl shadow-lg hover:shadow-blue-900/30 transition ease-in hover:-translate-y-1 hover:scale-105 duration-200"
                 >ADD TO CART</button>
             </div>   
         </div>

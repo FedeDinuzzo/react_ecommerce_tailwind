@@ -39,7 +39,7 @@ function ItemListContainer() {
         <Categories /> 
         {loading ? <div className="bg-gray-50 h-screen grid justify-center pt-40"><Loader /></div> :  
           <div className="bg-gray-50">
-            <div className="z-10 grid px-14 md:px-0 mx-auto pt-20 pb-16 p-2 sm:grid-cols-1 md:grid-cols-2 md:max-w-2xl lg:grid-cols-3 lg:max-w-4xl xl:grid-cols-4 xl:max-w-7xl">
+            <div className="z-10 grid px-4 md:px-0 mx-auto pt-20 pb-16 p-2 sm:grid-cols-1 md:grid-cols-2 md:max-w-2xl lg:grid-cols-3 lg:max-w-4xl xl:grid-cols-4 xl:max-w-7xl">
               <ItemList products={items} visible={visible} />
             </div>
             <div className="pb-28">

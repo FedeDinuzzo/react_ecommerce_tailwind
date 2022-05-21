@@ -35,11 +35,11 @@ function ItemDetail({ product }) {
                 <h3 className="lg:hidden text-gray-400 text-2xl md:text-3xl">{product.name}</h3>
                 <h3 className="lg:hidden text-slate-700 md:text-xl">{product.subtitle}</h3>
                 <div className="py-2 md:py-6">
-                    <img src={product.img[index]} alt="" className="w-screen px-2 md:px-60 lg:px-24" />
+                    <img src={product.img[index]} alt="" load="lazy" className="w-screen px-2 md:px-60 lg:px-24" />
                 </div>
                 <div className="grid grid-cols-3 md:grid-cols-6">
                 {product.imgMin.map((img, index)=> ( 
-                    <img src={img} key={index} alt="" 
+                    <img src={img} key={index} alt="" load="lazy"
                     onClick={() => bigImage(index)}
                     className="hover:bg-gray-200 mx-auto my-1 border-2 cursor-pointer" />
                 ))}

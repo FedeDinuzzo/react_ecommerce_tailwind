@@ -9,7 +9,7 @@ function Item({id, name, price, img}) {
       <div class="m-4 flex flex-col justify-center">
         <div class=" relative group">
           <div class="absolute -inset-1 bg-gradient-to-r from-green-300 to-gray-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"/>
-          <div class="relative px-7 py-6 bg-white ring-1 ring-gray-900/5 rounded-xl leading-none flex items-top justify-start space-x-6">
+          <div class="relative py-6 bg-white ring-1 ring-gray-900/5 rounded-xl leading-none flex items-top justify-start space-x-6">
             <div key={id} className="h-96 justify-center text-center m-auto">
               <Link to={`/item/${id}`}>
                 <img src={img[0]} alt="producto" loading="lazy" className="m-auto h-72  transition ease-in hover:-translate-y-1 hover:scale-110 duration-200" />
