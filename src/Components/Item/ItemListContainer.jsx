@@ -7,12 +7,13 @@ import {collection, getDocs, getFirestore, query, where } from 'firebase/firesto
 import Loader from '../Loader';
 
 function ItemListContainer() {
-
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const { category } = useParams();
   const [visible, setVisible] = useState(8);
 
+
+  //
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 8) ;
   };
@@ -21,6 +22,7 @@ function ItemListContainer() {
     setVisible((prevValue) => prevValue - visible + 8) ;
   };
 
+  //
   useEffect(() => {
     const db = getFirestore();
     const queryCollection = category ?

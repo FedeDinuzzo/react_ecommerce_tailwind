@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { Context } from '../../CartContext/ContextProvider';
 import ItemCount from './ItemCount';
 import ItemCart from './ItemCart';
@@ -6,25 +6,21 @@ import "./item.css";
 import ScrollToTop from '../ScrollToTop';
 
 function ItemDetail({ product }) {
-
-    let { addToCart } = useContext(Context)
+    let { addToCart } = useContext(Context);
     const [count, setCount] = useState(0);
 
+    //
     const onAdd = (product, count) => {
         setCount(count);
         addToCart(product, count);
     }
     
+    //
     const [index, setIndex] = useState(0);
-    const [imgLoaded, setImgLoaded] = useState([index]);
     
     const bigImage = (index) => {
         setIndex(index) 
     }
-    
-    useEffect(() => {
-        setImgLoaded(imgLoaded)
-    }, [imgLoaded]);
 
     return (        
     <>

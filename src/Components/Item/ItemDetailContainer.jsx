@@ -9,6 +9,7 @@ function ItemDetailContainer() {
     const [loading, setLoading] = useState(true)
     const {id} = useParams()
 
+    //
     useEffect(() => {
         const db = getFirestore();
         const queryDb = doc(db, 'products', id);

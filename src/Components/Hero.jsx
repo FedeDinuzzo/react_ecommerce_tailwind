@@ -12,9 +12,10 @@ function Hero() {
   let posY = 0;
   const onMouseMove = (e) => {mouseX = e.pageX; mouseY = e.pageY;}
   
-  //GSAP animation
+  //Remove warnings on console
   gsap.config({ nullTargetWarn: false });
   
+  //GSAP animation
   useEffect(() => {
     tl.to({},0.016,{
       repeat: -1,
@@ -35,7 +36,7 @@ function Hero() {
     <section onMouseMove={onMouseMove}  id="top" className=" fondo -mt-16 min-h-screen pb-20">
       <div className="grid items-center pt-32 lg:pt-0 lg:grid-cols-2 h-screen m-auto xl:max-w-7xl">
         <div className='grid lg:my-32  px-8 lg:pt-0 xl:px-4 '>
-          <p className=" text-white">TAG HEUER QUALITY EVERYWHERE</p>
+          <p className=" text-white mb-2">TAG HEUER QUALITY EVERYWHERE</p>
           <h1 className="font-bold text-5xl md:text-8xl text-white">The watch you need</h1>
           <Link to="shop" smooth={true}><button className="py-2 px-6 rounded my-8 text-xl fondo text-white shadow-inner transition ease-in hover:translate-y-1 hover:scale-105 shadow-white/20  duration-300">GO SHOPPING</button></Link>
         </div>

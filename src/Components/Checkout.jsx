@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../CartContext/ContextProvider';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
 import { Navigate } from 'react-router-dom';
 import EmptyCart from './EmptyCart';
 import Loader from './Loader';
@@ -16,15 +16,10 @@ function Checkout() {
   
   //Form varaibles
   const initialValues = { name: "", email: "", phone: "" };
-  //const localFormValues = JSON.parse(localStorage.getItem('formValues') || ('initialValues'));
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   localStorage.setItem('formValues', JSON.stringify(formValues))
-  // })
 
   //Set formValues with the changes when writing to inputs
   const handleChange = (e) => {
@@ -82,6 +77,7 @@ function Checkout() {
     const buyer = {
       buyer: formValues,
       items: cartOrder,
+      date: serverTimestamp(),
       finalPrice,
     };
 
@@ -97,10 +93,16 @@ function Checkout() {
   return (
     <>
     <ScrollToTop />
-    <div className="fondo -m-16 h-16 mb-0"></div>
+    <div className="fondo -m-16 h-16 mb-0 grid"></div>
     { cart.length === 0 && isSubmit === false ? <EmptyCart /> :
-    <div className="pt-8 pb-8 lg:pt-20 lg:pb-32 bg-gray-50">
-      <p className="text-center my-4 mb-8 text-gray-500 text-2xl">TOTAL PAYMENT: ${finalPrice}</p>
+    <div className="py-2 lg:pt-20 lg:pb-32 bg-gray-50">
+      {cart.map(prod => (
+        <div className="flex justify-center text-center mx-4">
+          <h3 className="text-gray-400 md:text-xl">{prod.name}</h3>
+          <h3 className="text-green-400 md:text-xl ml-2">Quantity: {parseInt(prod.quantity)}</h3>
+        </div>
+      ))}
+      <p className="text-center mt-4 mb-6 text-gray-500 text-2xl">TOTAL PAYMENT: ${finalPrice}</p>
       <div class="relative group block m-auto max-w-md bg-gray-50 rounded-lg ">
         <div class="absolute mx-4 md:mx-0 -inset-1 bg-gradient-to-r from-green-300 to-gray-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"/>
         <div class="relative mx-4 md:mx-0 py-6 bg-white ring-1 ring-gray-900/5 rounded-xl leading-none">
