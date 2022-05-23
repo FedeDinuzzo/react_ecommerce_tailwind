@@ -95,7 +95,7 @@ function Checkout() {
     <ScrollToTop />
     <div className="fondo -m-16 h-16 mb-0 grid"></div>
     { cart.length === 0 && isSubmit === false ? <EmptyCart /> :
-    <div className="py-2 lg:pt-20 lg:pb-32 bg-gray-50">
+    <div className="py-10 lg:pt-20 lg:pb-32 bg-gray-50">
       {cart.map(prod => (
         <div className="flex justify-center text-center mx-4">
           <h3 className="text-gray-400 md:text-xl">{prod.name}</h3>

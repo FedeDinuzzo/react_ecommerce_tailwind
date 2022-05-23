@@ -12,8 +12,7 @@ function ItemListContainer() {
   const { category } = useParams();
   const [visible, setVisible] = useState(8);
 
-
-  //
+  //Prevent infinite scrolling and excessive loading of products, improving performance
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 8) ;
   };
@@ -22,7 +21,6 @@ function ItemListContainer() {
     setVisible((prevValue) => prevValue - visible + 8) ;
   };
 
-  //
   useEffect(() => {
     const db = getFirestore();
     const queryCollection = category ?

@@ -4,6 +4,8 @@ This project was created with the purpose of being a thesis for the react course
 
 link to the demo: https://react-ecommerce-tailwind.web.app/
 
+You can see Navitaion gif at: ./src/Images/Navigation/
+
 
 # Library version
 

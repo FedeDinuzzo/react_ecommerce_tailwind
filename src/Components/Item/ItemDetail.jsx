@@ -9,18 +9,18 @@ function ItemDetail({ product }) {
     let { addToCart } = useContext(Context);
     const [count, setCount] = useState(0);
 
-    //
     const onAdd = (product, count) => {
         setCount(count);
         addToCart(product, count);
-    }
+    };
     
-    //
+    //Use the index of the thumb image, which is in an array. Big images are in another array
     const [index, setIndex] = useState(0);
     
+    //Set Big image based in the index of the thumb images. Since the indexes of the arrays correspond to each other
     const bigImage = (index) => {
-        setIndex(index) 
-    }
+        setIndex(index);
+    };
 
     return (        
     <>
