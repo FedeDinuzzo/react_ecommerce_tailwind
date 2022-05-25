@@ -21,7 +21,7 @@ export default function PurchaseComplete() {
   
   return (
     <>
-    <div className="fondo -m-16 h-16 mb-0"></div>
+    <div className="fondo -my-16 h-16 mb-0"></div>
     <div className="pb-48 lg:pb-72">
         <h1 className="pt-48 lg:pt-60 text-center text-green-400 text-2xl md:text-4xl">PURCHASED COMPLETED</h1>
         <p className="pt-4 text-center text-slate-700 text-2xl md:text-3xl">YOUR ORDER ID: {showOrderId}</p>

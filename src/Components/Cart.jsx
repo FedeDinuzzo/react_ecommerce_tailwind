@@ -12,7 +12,7 @@ export default function Cart() {
     <>
     <ScrollToTop />
     <div className="bg-gray-50">
-        <div className="fondo -m-16 h-16 mb-8"></div>
+        <div className="fondo -my-16 h-16 mb-8"></div>
         {cart.length === 0 ? <EmptyCart /> :
         <div className="m-auto px-4 max-w-5xl">
             <h1 className="text-gray-500 text-4xl lg:text-5xl py-2 text-center">CART</h1>

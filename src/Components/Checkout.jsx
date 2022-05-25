@@ -93,7 +93,7 @@ function Checkout() {
   return (
     <>
     <ScrollToTop />
-    <div className="fondo -m-16 h-16 mb-0 grid"></div>
+    <div className="fondo -my-16 h-16 mb-0 grid"></div>
     { cart.length === 0 && isSubmit === false ? <EmptyCart /> :
     <div className="py-10 lg:pt-20 lg:pb-32 bg-gray-50">
       {cart.map(prod => (

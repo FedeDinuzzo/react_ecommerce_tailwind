@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function NotFoundPage() {
   return (
     <>
-      <div className="fondo -m-16 h-16 mb-16"></div>
+      <div className="fondo -my-16 h-16 mb-16"></div>
       <div className="-mt-16 bg-white h-{600} flex m-auto text-center py-60 w-screen">
         <div className="m-auto align-center">
           <h2 className="font-bold text-6xl p-2">404 ERROR</h2>
