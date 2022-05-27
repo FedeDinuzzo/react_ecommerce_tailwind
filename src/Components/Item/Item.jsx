@@ -12,7 +12,7 @@ function Item({id, name, price, img}) {
           <div className="relative py-6 bg-white ring-1 ring-gray-900/5 rounded-xl leading-none flex items-top justify-start space-x-6">
             <div key={id} className="h-96 justify-center text-center m-auto">
               <Link to={`/item/${id}`}>
-                <img src={img[0]} alt="producto" loading="lazy" className="m-auto h-72  transition ease-in hover:-translate-y-1 hover:scale-110 duration-200" />
+                <img src={img[0]} height="288" width="183" alt="producto" loading="lazy" className="m-auto h-72  transition ease-in hover:-translate-y-1 hover:scale-110 duration-200" />
               </Link>
               <h3 className="mb-2 text-gray-500 font-bold">${price}</h3>
               <h3 className="text-gray-400">{name}</h3>
