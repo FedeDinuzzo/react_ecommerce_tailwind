@@ -38,7 +38,7 @@ export default function NavBar() {
 
     return (
         <> 
-        <nav className={(color ? 'bg-black' : '') + " sticky top-0 z-10 px-1"}>
+        <nav className={(color ? 'bg-black' : '') + " sticky top-0 z-30 px-1"}>
             <div className="max-w-screen-2xl m-auto justify-between items-center md:flex xl:px-24">
             <div className="flex items-center justify-between">
                 <Link to="top" smooth={true}>
