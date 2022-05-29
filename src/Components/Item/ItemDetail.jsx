@@ -25,7 +25,7 @@ function ItemDetail({ product }) {
                 <h3 className="ml-4 lg:hidden text-slate-700 mb-6">{product.subtitle}</h3>
                 <Carousel product={product}/>
             </div>
-            <div className="flex flex-col justify-center mx-4 md:mx-10 lg:my-48 px-6 xl:px-8 lg:py-6 lg:bg-gray-50 lg:shadow-md shadow-gray-400/30 rounded-2xl xl:ml-28 xl:max-w-xl">
+            <div className="flex flex-col justify-center mx-4 md:mx-10 lg:my-48 px-6 xl:px-8 lg:py-6 lg:bg-gray-50 lg:shadow-md shadow-gray-400/30 rounded-2xl xl:ml-28 xl:max-w-xl z-10">
                 <h3 className="hidden lg:block text-gray-400 text-3xl">{product.name}</h3>
                 <h3 className="hidden lg:block text-xl text-slate-700 mb-4">{product.subtitle}</h3>
                 <h3 className="text-gray-500 font-bold text-2xl my-4">${product.price}</h3>
